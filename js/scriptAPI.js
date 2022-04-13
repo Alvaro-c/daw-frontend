@@ -47,6 +47,7 @@ function addUser() {
             surname: "Silva",
             phone: "606830316",
             email: "test@test.com", 
+            password:"1234",
             rol: "1"
         })
     })
@@ -66,6 +67,7 @@ function editUser(id) {
             surname: "Silva",
             phone: "606830316",
             email: "test@test.com", 
+            password:"1234",
             rol: "1"
         })
     })
@@ -252,6 +254,35 @@ function findBookingById(id) {
         })
 }
 
+function findBookingByUser(id) {
+    const request = fetch(`http://127.0.0.1:4000/api/booking/user/${id}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            console.log(result);
+        })
+}
+
+function findBookingByProduct(id) {
+    const request = fetch(`http://127.0.0.1:4000/api/booking/product/${id}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            console.log(result);
+        })
+}
+
+function findBookingByDate(date) {
+    const request = fetch(`http://127.0.0.1:4000/api/booking/date/${date}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            console.log(result);
+        })
+}
 
 function addBooking() {
     const request = fetch(`http://127.0.0.1:4000/api/booking`, {
@@ -261,11 +292,15 @@ function addBooking() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            date: "2022-04-11",
             adults: "1",
             children: "0",
             comments: "Soy un adulto",
             user: {
                 id: "6"
+            }, 
+            product: {
+                id: "1"
             }
         })
     })
@@ -281,11 +316,15 @@ function editBooking(id) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            date: "2022-04-11",
             adults: "10",
             children: "0",
             comments: "Somos mazo adultos",
             user: {
                 id: "6"
+            }, 
+            product: {
+                id: "1"
             }
         })
     })
