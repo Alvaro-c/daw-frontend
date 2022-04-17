@@ -1,16 +1,6 @@
 
 //document.addEventListener('DOMContentLoaded', start);
 
-function start() {
-
-    const results = fetch('http://127.0.0.1:4000/api/client')
-        .then((promise) => {
-            return promise.json();
-        }).then((values) => {
-            console.log(values);
-        })
-
-}
 
 // CRUD functions for USER
 
@@ -21,6 +11,7 @@ function findAllUsers() {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -31,6 +22,7 @@ function findUserById(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -46,14 +38,16 @@ function addUser() {
             name: "Peter",
             surname: "Silva",
             phone: "606830316",
-            email: "test@test.com", 
-            password:"1234",
+            email: "test@test.com",
+            password: "1234",
             rol: "1"
         })
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
-
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 }
 
 function editUser(id) {
@@ -66,22 +60,28 @@ function editUser(id) {
             name: 'Anderson',
             surname: "Silva",
             phone: "606830316",
-            email: "test@test.com", 
-            password:"1234",
+            email: "test@test.com",
+            password: "1234",
             rol: "1"
         })
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 }
 
 
 function deleteUserById(id) {
 
     const request = fetch(`http://localhost:4000/api/user/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 }
 
 
@@ -94,6 +94,7 @@ function findAllMessages() {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -104,17 +105,20 @@ function findMessageById(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
+
 }
 
 function findMessageByUserId(id) {
     const request = fetch(`http://127.0.0.1:4000/api/message/user_id/${id}`)
-    .then((promise) => {
-        return promise.json();
-    })
-    .then((result) => {
-        console.log(result);
-    })
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function addMessage() {
@@ -133,7 +137,10 @@ function addMessage() {
         })
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(resultc)
+            return result;
+        })
 
 }
 
@@ -147,34 +154,43 @@ function editMessage(id) {
             body: 'Anderson',
             date: "2022-04-11",
             user: {
-                id:"6"
+                id: "6"
             }
         })
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function deleteMessageById(id) {
 
     const request = fetch(`http://localhost:4000/api/message/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
+
 }
 
 
-// CRUD functions for Products
 
-function findAllProducts() {
+// CRUD functions for PRODUCT
+
+function findAllProducts(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/product')
         .then((promise) => {
             return promise.json();
+        }).then((result) => {
+            callBack(result);
+            return result;
         })
-        .then((result) => {
-            console.log(result);
-        })
+
+    return request;
 }
 
 function findProductById(id) {
@@ -184,6 +200,7 @@ function findProductById(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -202,7 +219,10 @@ function addProduct() {
         })
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 
 }
 
@@ -218,21 +238,28 @@ function editProduct(id) {
             capacity: "21"
         })
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function deleteProductById(id) {
 
     const request = fetch(`http://localhost:4000/api/product/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        }
+        )
+
 }
 
 
-// CRUD functions for Booking
+// CRUD functions for BOOKING
 
 function findAllBookings() {
     const request = fetch('http://127.0.0.1:4000/api/booking')
@@ -241,6 +268,7 @@ function findAllBookings() {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -251,6 +279,7 @@ function findBookingById(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -261,6 +290,7 @@ function findBookingByUser(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -271,6 +301,7 @@ function findBookingByProduct(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -281,6 +312,7 @@ function findBookingByDate(date) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -298,14 +330,17 @@ function addBooking() {
             comments: "Soy un adulto",
             user: {
                 id: "6"
-            }, 
+            },
             product: {
                 id: "1"
             }
         })
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 
 }
 
@@ -322,21 +357,27 @@ function editBooking(id) {
             comments: "Somos mazo adultos",
             user: {
                 id: "6"
-            }, 
+            },
             product: {
                 id: "1"
             }
         })
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function deleteBookingById(id) {
 
     const request = fetch(`http://localhost:4000/api/booking/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result)
+            return result;;
+        })
+
 }
