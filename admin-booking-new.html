@@ -9,14 +9,7 @@
     <link rel="stylesheet" href="/css/tailwind-out.css">
     <script src="js/base-script.js"></script>
     <script src="js/scriptAPI.js"></script>
-    <script src="js/admin-product-edit.js"></script>
-
-    <style>
-        #1{
-
-            color: red;
-        }
-    </style>
+    <script src="js/admin-booking-new.js"></script>
 </head>
 
 <body>
@@ -127,8 +120,7 @@
         <div class="hidden bg-white" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
                 <!-- Current: "bg-indigo-50 border-sky-500 text-indigo-700", Default: "border-transparent text-white hover:bg-gray-50 hover:border-sky-500 hover:text-white" -->
-                <a href="/admin.html"
-                    class=" text-sky-800 block pl-3 pr-4 py-2  text-base font-medium">Panel
+                <a href="/admin.html" class=" text-sky-800 block pl-3 pr-4 py-2  text-base font-medium">Panel
                     de administración</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-200">
@@ -173,44 +165,60 @@
         <div class="bg-white shadow-lg px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Nuevo producto</h3>
-                    <p class="mt-1 text-sm text-gray-500">Introduce la infromación del producto que quieres añadir</p>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Nueva Reserva</h3>
+                    <p class="mt-1 text-sm text-gray-500">Introduce la infromación de la nueva reserva</p>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
 
                     <!-- form -->
-                    <form id="form" class="space-y-6" action="/admin-product.html" method="POST" enctype="multipart/form-data">
+                    <form id="form" class="space-y-6" action="/admin-product.html" method="POST">
 
                         <div class="col-span-6 sm:col-span-4">
-                            <label for="name" class="block text-sm font-medium text-gray-700">Nombre del
-                                producto</label>
-                            <input type="text" name="name" id="name" autocomplete="Nombre"
+                            <label for="product" class="block text-sm font-medium text-gray-700">Producto</label>
+                            <select name="product" id="product" autocomplete="Producto"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
+                            </select>
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="client" class="block text-sm font-medium text-gray-700">Cliente</label>
+                            <select type="text" name="client" id="client" autocomplete="Nombre"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </select>
+                        </div>
+                        <a href="/admin-user-new.html" class="flex justify-end">
+
+                            <button type="button"
+                                class=" bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Crear
+                                cliente</button>
+                        </a>
+
+                        <div class="grid grid-cols-2 gap-5">
+                            <div class="">
+                                <label for="adults" class="block text-sm font-medium text-gray-700">Adultos</label>
+                                <input type="number" name="adults" id="adults" autocomplete="Adultos"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+
+                            <div class="">
+                                <label for="children" class="block text-sm font-medium text-gray-700">Niños</label>
+                                <input type="number" name="children" id="children" autocomplete="Children"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </div>
+                        </div>
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="date" class="block text-sm font-medium text-gray-700">Fecha de visita</label>
+                            <input type="date" name="date" id="date" autocomplete="Date"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
                         <div class="col-span-6 sm:col-span-4">
-                            <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
-                            <input type="text" name="description" id="description" autocomplete="Descripcion"
+                            <label for="comments" class="block text-sm font-medium text-gray-700">Comentarios</label>
+                            <input type="text" name="comments" id="comments" autocomplete="Comments"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
-                        <div class="col-span-6 sm:col-span-4">
-                            <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
-                            <input type="text" name="price" id="price" autocomplete="Precio"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-4">
-                            <label for="capacity" class="block text-sm font-medium text-gray-700">Capacidad</label>
-                            <input type="number" name="capacity" id="capacity" autocomplete="Precio"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
-
-
-                        <div>
-                            <label for="image" class="block text-sm font-medium text-gray-700"> Imagen de portada </label>
-                            <input type="file" name="image" id="image" class="my-2" accept="image/png, image/jpeg">
-                        </div>
 
                         <div class="flex justify-end">
                             <a href="/admin-product.html">

@@ -174,7 +174,6 @@ function findAllProducts(callBack) {
             return promise.json();
         }).then((result) => {
             callBack(result);
-            console.log(result);
             return result;
         })
 }
@@ -222,7 +221,7 @@ function editProduct(id, product) {
         body: JSON.stringify(product)
     })
         .then((result) => {
-            console.log(result);
+            console.log(result, 'FLAG');
             return result;
         })
 }
@@ -245,24 +244,24 @@ function deleteProductById(id) {
 
 // CRUD functions for BOOKING
 
-function findAllBookings() {
+function findAllBookings(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/booking')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
 
-function findBookingById(id) {
+function findBookingById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
@@ -300,25 +299,14 @@ function findBookingByDate(date) {
         })
 }
 
-function addBooking() {
+function addBooking(booking) {
     const request = fetch(`http://127.0.0.1:4000/api/booking`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            date: "2022-04-11",
-            adults: "1",
-            children: "0",
-            comments: "Soy un adulto",
-            user: {
-                id: "6"
-            },
-            product: {
-                id: "1"
-            }
-        })
+        body: JSON.stringify(booking)
     })
         .then(resp => resp.json())
         .then((result) => {
@@ -328,24 +316,14 @@ function addBooking() {
 
 }
 
-function editBooking(id) {
+function editBooking(id, booking) {
+    console.log(booking);
     fetch(`http://127.0.0.1:4000/api/booking/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            date: "2022-04-11",
-            adults: "10",
-            children: "0",
-            comments: "Somos mazo adultos",
-            user: {
-                id: "6"
-            },
-            product: {
-                id: "1"
-            }
-        })
+        body: JSON.stringify(booking)
     })
         .then((result) => {
             console.log(result);
@@ -360,6 +338,7 @@ function deleteBookingById(id) {
     })
         .then(response => response.json())
         .then((result) => {
+            findAllBookings(showAllBookings);
             console.log(result)
             return result;;
         })

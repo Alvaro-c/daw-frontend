@@ -11,7 +11,9 @@ function start() {
 
         let id = new URLSearchParams(window.location.search).get('id');
         let product = getFormInfo();
+
         editProduct(id, product);
+        
         window.location.href = "../admin-product.html";
     }
 
