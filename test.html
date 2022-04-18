@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./js/scriptAPI.js"></script>
- 
+
 
 </head>
 
@@ -28,7 +28,7 @@
     <input type="button" onclick="editMessage(6)" value="Editar Mensaje">
     <input type="button" onclick="deleteMessageById(6)" value="borrar">
     <h3>Products</h3>
-    <input type="button" onclick="findAllProducts()" value="Encontrar Productos">
+    <input type="button" onclick="findAllProducts(callback)" value="Encontrar Productos">
     <input type="button" onclick="findProductById(6)" value="Encontrar por id">
     <input type="button" onclick="addProduct()" value="Añadir Productos">
     <input type="button" onclick="editProduct(6)" value="Editar Productos">
@@ -45,5 +45,12 @@
 
 
 
+    <script>
+        function callback(products) {
+        }
+
+    </script>
+
 </body>
+
 </html>

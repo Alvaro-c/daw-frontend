@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', menus);
 
 
-//This function makes the menus collapsable
+//This function makes the nav bar menus collapsable
 function menus() {
 
     let links = document.getElementById('mobile-menu'); // Lo que oculto
@@ -27,5 +27,6 @@ function menus() {
 
 
 }
+
 
 

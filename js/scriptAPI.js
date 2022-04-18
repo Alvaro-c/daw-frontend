@@ -4,44 +4,37 @@
 
 // CRUD functions for USER
 
-function findAllUsers() {
+function findAllUsers(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/user')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
 
-function findUserById(id) {
+function findUserById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/user/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
 
 
-function addUser() {
+function addUser(user) {
     const request = fetch(`http://127.0.0.1:4000/api/user`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: "Peter",
-            surname: "Silva",
-            phone: "606830316",
-            email: "test@test.com",
-            password: "1234",
-            rol: "1"
-        })
+        body: JSON.stringify(user)
     })
         .then(resp => resp.json())
         .then((result) => {
@@ -50,20 +43,13 @@ function addUser() {
         })
 }
 
-function editUser(id) {
+function editUser(id, user) {
     fetch(`http://127.0.0.1:4000/api/user/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: 'Anderson',
-            surname: "Silva",
-            phone: "606830316",
-            email: "test@test.com",
-            password: "1234",
-            rol: "1"
-        })
+        body: JSON.stringify(user)
     })
         .then((result) => {
             console.log(result)
@@ -79,6 +65,7 @@ function deleteUserById(id) {
     })
         .then(response => response.json())
         .then((result) => {
+            findAllUsers(showAllUsers);
             console.log(result)
             return result;
         })
@@ -187,36 +174,36 @@ function findAllProducts(callBack) {
             return promise.json();
         }).then((result) => {
             callBack(result);
-            return result;
-        })
-
-    return request;
-}
-
-function findProductById(id) {
-    const request = fetch(`http://127.0.0.1:4000/api/product/${id}`)
-        .then((promise) => {
-            return promise.json();
-        })
-        .then((result) => {
             console.log(result);
             return result;
         })
 }
 
+function findProductById(id, callBack) {
+    const request = fetch(`http://127.0.0.1:4000/api/product/${id}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            callBack(result);
+        })
+}
 
-function addProduct() {
+
+function addProduct(product) {
+
+    let pjson = JSON.stringify(product)
+    console.log(product, typeof pjson);
     const request = fetch(`http://127.0.0.1:4000/api/product`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            //"Accept": "application/json",
         },
-        body: JSON.stringify({
-            name: "Loler",
-            price: "0",
-            capacity: "20"
-        })
+        body: JSON.stringify(product)
+
+
     })
         .then(resp => resp.json())
         .then((result) => {
@@ -226,17 +213,13 @@ function addProduct() {
 
 }
 
-function editProduct(id) {
+function editProduct(id, product) {
     fetch(`http://127.0.0.1:4000/api/product/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: 'Anderson',
-            price: "5",
-            capacity: "21"
-        })
+        body: JSON.stringify(product)
     })
         .then((result) => {
             console.log(result);
@@ -252,6 +235,7 @@ function deleteProductById(id) {
         .then(response => response.json())
         .then((result) => {
             console.log(result);
+            findAllProducts(showAllProducts);
             return result;
         }
         )
