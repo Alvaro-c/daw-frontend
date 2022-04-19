@@ -16,7 +16,7 @@ function productsToGallery(products) {
         let gallery = document.getElementById(`products`);
 
         let link = document.createElement(`a`);
-        link.setAttribute(`href`, `/test.html?${products[i].id}`);
+        link.setAttribute(`href`, `/product.html?${products[i].id}`);
         link.setAttribute(`class`, `group text-sm`);
         let container3 = document.createElement(`div`);
         container3.setAttribute(`class`, `w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75`);

@@ -74,24 +74,24 @@ function deleteUserById(id) {
 
 // CRUD functions for MESSAGE
 
-function findAllMessages() {
+function findAllMessages(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/message')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
 
-function findMessageById(id) {
+function findMessageById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/message/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 
@@ -108,24 +108,18 @@ function findMessageByUserId(id) {
         })
 }
 
-function addMessage() {
+function addMessage(message) {
     const request = fetch(`http://127.0.0.1:4000/api/message`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            body: "Loler",
-            date: "2022-04-11",
-            user: {
-                id: "6"
-            }
-        })
+        body: JSON.stringify(message)
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(resultc)
+            console.log(result)
             return result;
         })
 
@@ -159,6 +153,7 @@ function deleteMessageById(id) {
         .then(response => response.json())
         .then((result) => {
             console.log(result);
+            findAllMessages(showAllMessages);
             return result;
         })
 

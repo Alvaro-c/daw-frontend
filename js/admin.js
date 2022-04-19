@@ -12,11 +12,11 @@ function loadBookings(bookings) {
     let ul = document.getElementById('last-bookings');
     let max = 0;
     bookings.length < 1 ? max = 1 : max = bookings.length;
+    bookings = bookings.reverse(); // To show first the most recent
 
     for (let i = 0; i < max; i++) {
 
         let template = getTemplate(i, bookings);
-
         let li = document.createElement('li');
         li.setAttribute('class', 'py-5');
         li.setAttribute('if', `booking-id-${bookings[i].id}`);
