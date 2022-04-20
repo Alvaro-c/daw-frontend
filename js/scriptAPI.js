@@ -1,139 +1,127 @@
 
 //document.addEventListener('DOMContentLoaded', start);
 
-function start() {
-
-    const results = fetch('http://127.0.0.1:4000/api/client')
-        .then((promise) => {
-            return promise.json();
-        }).then((values) => {
-            console.log(values);
-        })
-
-}
 
 // CRUD functions for USER
 
-function findAllUsers() {
+function findAllUsers(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/user')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
 }
 
-function findUserById(id) {
+function findUserById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/user/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
 }
 
 
-function addUser() {
+function addUser(user) {
     const request = fetch(`http://127.0.0.1:4000/api/user`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: "Peter",
-            surname: "Silva",
-            phone: "606830316",
-            email: "test@test.com", 
-            password:"1234",
-            rol: "1"
-        })
+        body: JSON.stringify(user)
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
-
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 }
 
-function editUser(id) {
+function editUser(id, user) {
     fetch(`http://127.0.0.1:4000/api/user/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: 'Anderson',
-            surname: "Silva",
-            phone: "606830316",
-            email: "test@test.com", 
-            password:"1234",
-            rol: "1"
-        })
+        body: JSON.stringify(user)
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 }
 
 
 function deleteUserById(id) {
 
     const request = fetch(`http://localhost:4000/api/user/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
+        .then(response => response.json())
+        .then((result) => {
+            findAllUsers(showAllUsers);
+            console.log(result)
+            return result;
+        })
 }
 
 
 // CRUD functions for MESSAGE
 
-function findAllMessages() {
+function findAllMessages(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/message')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
 }
 
-function findMessageById(id) {
+function findMessageById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/message/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
+
 }
 
 function findMessageByUserId(id) {
     const request = fetch(`http://127.0.0.1:4000/api/message/user_id/${id}`)
-    .then((promise) => {
-        return promise.json();
-    })
-    .then((result) => {
-        console.log(result);
-    })
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
-function addMessage() {
+function addMessage(message) {
     const request = fetch(`http://127.0.0.1:4000/api/message`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            body: "Loler",
-            date: "2022-04-11",
-            user: {
-                id: "6"
-            }
-        })
+        body: JSON.stringify(message)
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result)
+            return result;
+        })
 
 }
 
@@ -147,110 +135,129 @@ function editMessage(id) {
             body: 'Anderson',
             date: "2022-04-11",
             user: {
-                id:"6"
+                id: "6"
             }
         })
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function deleteMessageById(id) {
 
     const request = fetch(`http://localhost:4000/api/message/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result);
+            findAllMessages(showAllMessages);
+            return result;
+        })
+
 }
 
 
-// CRUD functions for Products
 
-function findAllProducts() {
+// CRUD functions for PRODUCT
+
+function findAllProducts(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/product')
         .then((promise) => {
             return promise.json();
-        })
-        .then((result) => {
-            console.log(result);
+        }).then((result) => {
+            callBack(result);
+            return result;
         })
 }
 
-function findProductById(id) {
+function findProductById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/product/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
         })
 }
 
 
-function addProduct() {
+function addProduct(product) {
+
+    let pjson = JSON.stringify(product)
+    console.log(product, typeof pjson);
     const request = fetch(`http://127.0.0.1:4000/api/product`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            //"Accept": "application/json",
         },
-        body: JSON.stringify({
-            name: "Loler",
-            price: "0",
-            capacity: "20"
-        })
+        body: JSON.stringify(product)
+
+
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 
 }
 
-function editProduct(id) {
+function editProduct(id, product) {
     fetch(`http://127.0.0.1:4000/api/product/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            name: 'Anderson',
-            price: "5",
-            capacity: "21"
-        })
+        body: JSON.stringify(product)
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result, 'FLAG');
+            return result;
+        })
 }
 
 function deleteProductById(id) {
 
     const request = fetch(`http://localhost:4000/api/product/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            console.log(result);
+            findAllProducts(showAllProducts);
+            return result;
+        }
+        )
+
 }
 
 
-// CRUD functions for Booking
+// CRUD functions for BOOKING
 
-function findAllBookings() {
+function findAllBookings(callBack) {
     const request = fetch('http://127.0.0.1:4000/api/booking')
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
 }
 
-function findBookingById(id) {
+function findBookingById(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
+            return result;
         })
 }
 
@@ -261,6 +268,7 @@ function findBookingByUser(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -271,6 +279,7 @@ function findBookingByProduct(id) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
@@ -281,62 +290,52 @@ function findBookingByDate(date) {
         })
         .then((result) => {
             console.log(result);
+            return result;
         })
 }
 
-function addBooking() {
+function addBooking(booking) {
     const request = fetch(`http://127.0.0.1:4000/api/booking`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            date: "2022-04-11",
-            adults: "1",
-            children: "0",
-            comments: "Soy un adulto",
-            user: {
-                id: "6"
-            }, 
-            product: {
-                id: "1"
-            }
-        })
+        body: JSON.stringify(booking)
     })
         .then(resp => resp.json())
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 
 }
 
-function editBooking(id) {
+function editBooking(id, booking) {
+    console.log(booking);
     fetch(`http://127.0.0.1:4000/api/booking/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            date: "2022-04-11",
-            adults: "10",
-            children: "0",
-            comments: "Somos mazo adultos",
-            user: {
-                id: "6"
-            }, 
-            product: {
-                id: "1"
-            }
-        })
+        body: JSON.stringify(booking)
     })
-        .then(resp => console.log(resp))
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
 }
 
 function deleteBookingById(id) {
 
     const request = fetch(`http://localhost:4000/api/booking/${id}`, {
-      method: 'DELETE'
+        method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(resp => console.log(resp))
-    
+        .then(response => response.json())
+        .then((result) => {
+            findAllBookings(showAllBookings);
+            console.log(result)
+            return result;;
+        })
+
 }

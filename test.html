@@ -8,27 +8,11 @@
     <title>Document</title>
     <script src="./js/scriptAPI.js"></script>
 
+
 </head>
 
 <body>
     <h1>testing</h1>
-
-    <!-- <form action="http://127.0.0.1:4000/api/client/edit" method="get">
-
-        client_id<input type="number" name="client_id"><br>
-        name <input type="text" name="name"><br>
-        surname<input type="text" name="surname"><br>
-        email<input type="email" name="email"><br>
-        phone<input type="text" name="phone"><br>
-        adults<input type="number" name="adults"><br>
-        children<input type="number" name="children"><br>
-        comment<input type="text" name="comment"><br>
-        visit_date<input type="text" name="visit_date"><br>
-        tour_id <input type="number" name="tour_id"><br>
-
-        <input type="submit" value="enviar">
-        
-    </form> -->
 
     <h3>Users</h3>
     <input type="button" onclick="findAllUsers()" value="Encontrar Usuarios">
@@ -44,11 +28,11 @@
     <input type="button" onclick="editMessage(6)" value="Editar Mensaje">
     <input type="button" onclick="deleteMessageById(6)" value="borrar">
     <h3>Products</h3>
-    <input type="button" onclick="findAllProducts()" value="Encontrar Productos">
+    <input type="button" onclick="findAllProducts(callback)" value="Encontrar Productos">
     <input type="button" onclick="findProductById(6)" value="Encontrar por id">
     <input type="button" onclick="addProduct()" value="Añadir Productos">
     <input type="button" onclick="editProduct(6)" value="Editar Productos">
-    <input type="button" onclick="deleteProductById(7)" value="borrar">
+    <input type="button" onclick="deleteProductById(8)" value="borrar">
     <h3>Bookings</h3>
     <input type="button" onclick="findAllBookings()" value="Encontrar Reserva">
     <input type="button" onclick="findBookingById(6)" value="Encontrar por id">
@@ -61,5 +45,12 @@
 
 
 
+    <script>
+        function callback(products) {
+        }
+
+    </script>
+
 </body>
+
 </html>
