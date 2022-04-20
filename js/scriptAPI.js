@@ -339,3 +339,23 @@ function deleteBookingById(id) {
         })
 
 }
+
+
+// Login controll
+
+function login(user, callBack) {
+    const request = fetch(`http://127.0.0.1:4000/api/access`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+            callBack(result);
+            return result;
+        })
+
+}
