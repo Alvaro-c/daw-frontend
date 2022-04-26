@@ -341,16 +341,17 @@ function deleteBookingById(id) {
 }
 
 
-// Login controll
+// Making a booking
 
-function login(user, callBack) {
-    const request = fetch(`http://127.0.0.1:4000/api/access`, {
+function getAvailability(booking, callBack){
+
+    const request = fetch(`http://127.0.0.1:4000/api/availability`, {
 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(booking)
     })
         .then(resp => resp.json())
         .then((result) => {
@@ -359,3 +360,59 @@ function login(user, callBack) {
         })
 
 }
+
+function newBooking(booking){
+
+    const request = fetch(`http://127.0.0.1:4000/api/booking`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(booking)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
+}
+
+
+
+
+// Login controll
+
+function login(user, callBack) {
+    const request = fetch(`http://127.0.0.1:4000/api/login/access`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+        .then((resp) => {
+            
+            //console.log(console.log(...resp.headers));
+           return resp.json()
+        })
+        .then((result) => {
+
+            callBack(result);
+            return result;
+        })
+
+}
+
+function checkUserSession() {
+    const request = fetch(`http://127.0.0.1:4000/api/login/test`)
+        .then(resp => resp.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
+    // 
+}
+
+

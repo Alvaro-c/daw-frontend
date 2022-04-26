@@ -10,8 +10,8 @@ function start() {
         e.preventDefault();
 
         let user = getFormInfo();
-        login(user, checkAccess);
-        // window.location.href = "../admin.html";
+        login(user, checkAccess); 
+
     }
 
     function getFormInfo() {
@@ -29,16 +29,24 @@ function start() {
 
     function checkAccess(response) {
 
-        console.log(response);
-
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
+        
 
         if (response.email == email && response.password == password) {
-            window.location.href = "../admin.html";
+            let session = response.rol; // Session is created
+            
+            window.location.href = "../admin.html"; 
         } else {
             window.location.href = "../test.html";
         }
+
+    }
+
+    //document.getElementById('test').addEventListener('click', getUserSession)
+
+    function getUserSession(){
+        checkUserSession()
 
     }
 

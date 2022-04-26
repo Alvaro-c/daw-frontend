@@ -21,7 +21,7 @@ function productRevAndFaq() {
                 reviews.classList.toggle('hidden');
                 faq.classList.toggle('hidden');
             }
-            
+
         });
 
     document.getElementById('tab-faq')
@@ -30,25 +30,27 @@ function productRevAndFaq() {
                 reviews.classList.toggle('hidden');
                 faq.classList.toggle('hidden');
             }
-            
+
         });
 
 
 }
 
-function loadProduct(){
+function loadProduct() {
 
-    let id = new URLSearchParams(window.location.search).get('id');
-    findProductById(id, (product)=> {
-
+    let id = new URLSearchParams(window.location.search).get('id')
+    findProductById(id, (product) => {
+        
         let image = document.getElementById('product-image');
         //TODO set image
         document.getElementById('product-name').innerHTML = product.name;
         document.getElementById('product-description').innerHTML = product.description;
         document.getElementById('product-price').innerHTML = product.price;
+        let link = document.getElementById('booking-link');
+        link.setAttribute('href', `/booking-form.html?id=${id}`);
 
 
     })
 
-    
+
 }
