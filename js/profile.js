@@ -1,14 +1,19 @@
 document.addEventListener('DOMContentLoaded', start);
 
-const USERID = 6;
+let USERID;
 
 function start() {
 
+    let user = document.cookie.split('&')[0];
+    let USERID = user.split('=')[1];
+
     let userName = document.getElementById('user');
     let userIdField = document.getElementById('id');
+    let editProfile = document.getElementById('editProfile');
     findUserById(USERID, (user)=>{
         userName.innerHTML = user.name;
         userIdField.innerHTML = user.id;
+        editProfile.setAttribute('href', `./edit-profile.html?id=${user.id}`)
         
     })
     //findAllBookings(loadBookings);

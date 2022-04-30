@@ -50,15 +50,22 @@ function menus() {
   // Show user options
   if (isLoged()) {
 
-    let menuOptions = `
-    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+    if (document.cookie.split('=')[1] != undefined) {
+
+      let user = document.cookie.split('&')[0];
+      let userId = user.split('=')[1];
+
+
+      let menuOptions = `
+    <a href="./profile.html?id=${userId}" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-1">Perfil</a>
     <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-3">Cerrar Sesión</a>`;
 
-    let menu = document.getElementById('userMenu');
-    menu.innerHTML = menuOptions;
+      let menu = document.getElementById('userMenu');
+      menu.innerHTML = menuOptions;
 
+    }
 
   }
 
@@ -69,8 +76,6 @@ function menus() {
     let menuOptions = `
     <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-0"></a>
-    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-      id="user-menu-item-1">Perfil</a>
     <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-3">Cerrar Sesión</a>`;
 

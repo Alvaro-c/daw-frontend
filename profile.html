@@ -8,6 +8,7 @@
     <title>Free Tour Segovia</title>
     <link rel="stylesheet" href="./css/tailwind-out.css">
     <script src="./js/base-script.js"></script>
+    <script src="./js/access-controll.js"></script>
     <script src="./js/scriptAPI.js"></script>
     <script src="./js/profile.js"></script>
 </head>
@@ -47,23 +48,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="border-t border-gray-200 bg-gray-50 grid grid-cols-1 divide-y divide-gray-200 sm:grid-cols-3 sm:divide-y-0 sm:divide-x">
-                                    <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <span class="text-gray-900">X</span>
-                                        <span class="text-gray-600">Reservas hoy</span>
-                                    </div>
-
-                                    <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <span class="text-gray-900">XX</span>
-                                        <span class="text-gray-600">Reservas esta semana</span>
-                                    </div>
-
-                                    <div class="px-6 py-5 text-sm font-medium text-center">
-                                        <span class="text-gray-900">XXX</span>
-                                        <span class="text-gray-600">Reservas este mes</span>
-                                    </div>
-                                </div>
                             </div>
                         </section>
 
@@ -88,7 +72,7 @@
                                     </div>
                                     <div class="mt-8">
                                         <h3 class="text-lg font-medium">
-                                            <a href="./admin-product.html" class="focus:outline-none">
+                                            <a id="editProfile"  class="focus:outline-none">
                                                 <!-- Extend touch target to entire panel -->
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Editar Perfil
@@ -122,7 +106,7 @@
                                     </div>
                                     <div class="mt-8">
                                         <h3 class="text-lg font-medium">
-                                            <a href=".admin-message.html" class="focus:outline-none">
+                                            <a href="./message.html" class="focus:outline-none">
                                                 <!-- Extend touch target to entire panel -->
                                                 <span class="absolute inset-0" aria-hidden="true"></span>
                                                 Contacta con nosotros
@@ -151,17 +135,13 @@
                             <div class="rounded-lg bg-white overflow-hidden shadow">
                                 <div class="p-6">
                                     <h2 class="text-base font-medium text-gray-900" id="announcements-title">
-                                        Ultimas reservas</h2>
+                                        Reservas Confirmadas</h2>
                                     <div class="flow-root mt-6">
                                         <ul id="last-bookings" role="list" class="-my-5 divide-y divide-gray-200">
 
                                         </ul>
                                     </div>
-                                    <div class="mt-6">
-                                        <a href="./admin-booking.html"
-                                            class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-white bg-sky-500 hover:bg-sky-700">
-                                            Ver todas </a>
-                                    </div>
+
                                 </div>
                             </div>
                         </section>
