@@ -7,24 +7,24 @@ function menus() {
   try {
 
     document.getElementById('navbar').innerHTML = header;
-    
+
   } catch {
 
   }
-  try{
+  try {
     document.getElementById('navbarAdmin').innerHTML = headerAdmin;
-  } catch{
+  } catch {
 
   }
-  try{
+  try {
     document.getElementById('footer').innerHTML = footer;
-  } catch{
+  } catch {
 
   }
 
 
 
-  
+
 
 
   let links = document.getElementById('mobile-menu'); // Lo que oculto
@@ -47,20 +47,59 @@ function menus() {
       menu.classList.toggle('hidden');
     });
 
+  // Show user options
+  if (isLoged()) {
+
+    let menuOptions = `
+    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-1">Perfil</a>
+    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-3">Cerrar Sesión</a>`;
+
+    let menu = document.getElementById('userMenu');
+    menu.innerHTML = menuOptions;
 
 
+  }
 
+
+  // Show admin options in menu
+  if (isAdmin()) {
+
+    let menuOptions = `
+    <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-0"></a>
+    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-1">Perfil</a>
+    <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-3">Cerrar Sesión</a>`;
+
+
+    let menu = document.getElementById('userMenu');
+    menu.innerHTML = menuOptions;
+
+    let adminOption = document.getElementById('user-menu-item-0');
+    adminOption.innerHTML = 'Administración';
+    adminOption.setAttribute('href', './admin.html');
+
+  }
+  try {
+
+    document.getElementById('user-menu-item-3').addEventListener('click', deleteCookie)
+  } catch {
+
+  }
 
 }
 
-const header = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+const header = `    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
   <div class="flex">
 
-    <a href="/" class="flex-shrink-0 flex items-center">
+    <a href="./index.html" class="flex-shrink-0 flex items-center">
       <!-- Logo -->
 
-        <img class="block h-12 w-auto" src="/assets/images/umbrella-transparent-148x121.png"
+        <img class="block h-12 w-auto" src="./img/umbrella-transparent-148x121.png"
           alt="FreeTourSegovia">
         <span class="mx-3 text-white text-lg font-bold">FreeTourSegovia</span>
       
@@ -68,13 +107,13 @@ const header = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
       <!-- Current: Default: "border-transparent text-white hover:border-sky-500 hover:text-white" -->
-      <a id="home" href="/"
+      <a id="home" href="./index.html"
         class="border-transparent hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
         Home </a>
-      <a id="tours" href="/products.html"
+      <a id="tours" href="./products.html"
         class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
         Tours </a>
-      <a id="comer" href="/"
+      <a id="comer" href="./index.html"
         class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
         Dónde comer en Segovia </a>
     </div>
@@ -114,16 +153,12 @@ const header = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           From: "transform opacity-100 scale-100"
           To: "transform opacity-0 scale-95"
       -->
-      <div
+      <div id="userMenu"
         class="z-10 hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
         <!-- Active: "bg-gray-100", Not Active: "" -->
-        <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-          id="user-menu-item-0">Your Profile</a>
-        <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-          id="user-menu-item-1">Settings</a>
-        <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-          id="user-menu-item-2">Sign out</a>
+        <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+          id="user-menu-item-0">Login</a>
       </div>
     </div>
   </div>
@@ -210,17 +245,17 @@ const header = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 const headerAdmin = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
     <div class="flex">
-        <a href="/" class="flex-shrink-0 flex items-center">
+        <a href="./index.html" class="flex-shrink-0 flex items-center">
             <!-- Logo -->
 
-              <img class="block h-12 w-auto" src="/assets/images/umbrella-transparent-148x121.png"
+              <img class="block h-12 w-auto" src="./img/umbrella-transparent-148x121.png"
                 alt="FreeTourSegovia">
               <span class="mx-3 text-white text-lg font-bold">FreeTourSegovia</span>
             
           </a>
         <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: Default: "border-transparent text-white hover:border-sky-500 hover:text-white" -->
-            <a href="/admin.html"
+            <a href="./admin.html"
                 class="hover:border-sky-500 border-amber-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                 Panel de administración </a>
         </div>
@@ -260,15 +295,10 @@ const headerAdmin = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     From: "transform opacity-100 scale-100"
     To: "transform opacity-0 scale-95"
 -->
-            <div class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+            <div id="userMenu" class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                    id="user-menu-item-0">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                    id="user-menu-item-1">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                    id="user-menu-item-2">Sign out</a>
+
             </div>
         </div>
     </div>
@@ -311,7 +341,7 @@ const headerAdmin = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="hidden bg-white" id="mobile-menu">
 <div class="pt-2 pb-3 space-y-1">
     <!-- Current: "bg-indigo-50 border-sky-500 text-indigo-700", Default: "border-transparent text-white hover:bg-gray-50 hover:border-sky-500 hover:text-white" -->
-    <a href="/admin.html" class=" text-sky-800 block pl-3 pr-4 py-2  text-base font-medium">Panel
+    <a href="./admin.html" class=" text-sky-800 block pl-3 pr-4 py-2  text-base font-medium">Panel
         de administración</a>
 </div>
 <div class="pt-4 pb-3 border-t border-gray-200">
@@ -349,11 +379,10 @@ const headerAdmin = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 </div>
 </div>`
 
-
 const footer = `    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
 <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
   <div class="px-5 py-2">
-    <a href="#" class="text-base text-white hover:text-white"> Tours </a>
+    <a href="./products.html" class="text-base text-white hover:text-white"> Tours </a>
   </div>
 
   <div class="px-5 py-2">

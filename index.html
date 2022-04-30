@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Tour Segovia</title>
-    <link rel="stylesheet" href="/css/tailwind-out.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="js/base-script.js"></script>
-    <script src="js/scriptAPI.js"></script>
+    <link rel="stylesheet" href="./css/tailwind-out.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/access-controll.js"></script>
+    <script src="./js/scriptAPI.js"></script>
+    <script src="./js/base-script.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
 </head>
 
@@ -34,7 +36,7 @@
                     <div class="mx-auto">
                         <div class="relative sm:overflow-hidden">
                             <div class="absolute inset-0">
-                                <img class="h-full w-full object-cover" src="/img/hero.jpg"
+                                <img class="h-full w-full object-cover" src="./img/hero.jpg"
                                     alt="People working on laptops">
                             </div>
                             <div class="max-w-5xl mx-auto relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
@@ -48,10 +50,10 @@
                                 <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                     <div
                                         class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                                        <a href="#"
+                                        <button id="info" 
                                             class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-black bg-white hover:bg-indigo-50 sm:px-8 no-shadow">
-                                            Más información </a>
-                                        <a href="/products.html"
+                                            Más información </button>
+                                        <a href="./products.html"
                                             class="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-sky-500 bg-opacity-90 hover:bg-opacity-90 sm:px-8 no-shadow">
                                             Ver tours disponibles </a>
                                     </div>
@@ -68,10 +70,10 @@
                             también en</p>
                         <div class="mt-6 grid grid-cols-2 gap-4">
                             <div class="col-span-1 flex justify-center">
-                                <img class="h-12" src="/img/freetourcom-logo.png" alt="Tuple">
+                                <img class="h-12" src="./img/freetourcom-logo.png" alt="Tuple">
                             </div>
                             <div class="col-span-1 flex justify-center">
-                                <img class="h-12" src="/img/guruwalk-logo.png" alt="Mirage">
+                                <img class="h-12" src="./img/guruwalk-logo.png" alt="Mirage">
                             </div>
                         </div>
                     </div>
@@ -83,7 +85,7 @@
             <div class="relative py-10 bg-white overflow-hidden">
                 <div class="relative px-4 sm:px-6 lg:px-8">
                     <div class="text-lg max-w-prose mx-auto">
-                        <h1>
+                        <h1 id="title">
                             <span
                                 class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                                 Conoce Segovia con nosotros</span>
@@ -122,13 +124,13 @@
         </div>
         <div class="carousel-inner relative w-full overflow-hidden rounded-xl">
             <div class="carousel-item active float-left w-full">
-                <img src="/img/acueducto.jpg" class="block w-full" alt="Wild Landscape" />
+                <img src="./img/acueducto.jpg" class="block w-full" alt="Wild Landscape" />
             </div>
             <div class="carousel-item float-left w-full">
-                <img src="/img/catedral.jpg" class="block w-full" alt="Camera" />
+                <img src="./img/catedral.jpg" class="block w-full" alt="Camera" />
             </div>
             <div class="carousel-item float-left w-full">
-                <img src="/img/alcazar.jpg" class="block w-full" alt="Exotic Fruits" />
+                <img src="./img/alcazar.jpg" class="block w-full" alt="Exotic Fruits" />
             </div>
         </div>
         <button
@@ -167,7 +169,7 @@
                                     </p>
                                 </blockquote>
                                 <div class="flex justify-center">
-                                    <img src="/img/TripAdvisor_5_stars.png" class="h-8" />
+                                    <img src="./img/TripAdvisor_5_stars.png" class="h-8" />
                                 </div>
                                 <p class="text-gray-500">- Fran S</p>
                             </div>
@@ -182,7 +184,7 @@
                                     </p>
                                 </blockquote>
                                 <div class="flex justify-center">
-                                    <img src="/img/TripAdvisor_5_stars.png" class="h-8" />
+                                    <img src="./img/TripAdvisor_5_stars.png" class="h-8" />
                                 </div>
                                 <p class="text-gray-500">- Carlota S</p>
                             </div>
@@ -194,7 +196,7 @@
                                     </p>
                                 </blockquote>
                                 <div class="flex justify-center">
-                                    <img src="/img/TripAdvisor_5_stars.png" class="h-8" />
+                                    <img src="./img/TripAdvisor_5_stars.png" class="h-8" />
                                 </div>
                                 <p class="text-gray-500">- Ana G</p>
                             </div>
@@ -246,7 +248,7 @@
     </div>
     </div>
 
-    <a href="/products.html"
+    <a href="./products.html"
         class="mx-auto max-w-md flex items-center justify-center px-4 py-3 mt-5 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-sky-500 bg-opacity-90 hover:bg-opacity-90 sm:px-8 no-shadow">
         Ver tours disponibles </a>
 
@@ -256,7 +258,7 @@
 
     <!-- Footer -->
 
-    <footer id="footer" class="bg-amber-500">
+    <footer id="footer" class="bg-amber-500 mt-14">
 
     </footer>
 

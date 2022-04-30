@@ -28,7 +28,7 @@ function send(e){
             'rol': 0
         }
         addUser(user)
-        window.location.href = "../login.html";
+        window.location.href = "./login.html";
     }
 }
 

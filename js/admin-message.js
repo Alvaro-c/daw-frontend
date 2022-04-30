@@ -2,42 +2,48 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-  findAllMessages(showAllMessages);
+    if (isAdmin()) {
+
+        findAllMessages(showAllMessages);
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
 }
 
 function showAllMessages(messages) {
 
     console.log(messages);
-  
+
     let stackedList = document.getElementById('message-list');
     stackedList.innerHTML = ``;
-  
-  
-  
-    for (let i = 0; i < messages.length; i++) {
-  
-      let template = getTemplate(messages, i);
-  
-      let li = document.createElement('li');
-      li.innerHTML = template;
-      li.setAttribute('id', `booking-${messages[i].id}`);
-      stackedList.appendChild(li);
-  
-      document.getElementById(`user-id-${messages[i].id}`).innerHTML = messages[i].user.id;
-      document.getElementById(`user-name-${messages[i].id}`).innerHTML = messages[i].user.name;
-      document.getElementById(`message-date-${messages[i].id}`).innerHTML = messages[i].date;
-      document.getElementById(`select-link-${messages[i].id}`).setAttribute(`href`, `/admin-message-edit.html?id=${messages[i].id}`);
-      document.getElementById(`delete-function-${messages[i].id}`).setAttribute(`onclick`, `deleteMessageById(${messages[i].id})`);
 
-  
+
+
+    for (let i = 0; i < messages.length; i++) {
+
+        let template = getTemplate(messages, i);
+
+        let li = document.createElement('li');
+        li.innerHTML = template;
+        li.setAttribute('id', `booking-${messages[i].id}`);
+        stackedList.appendChild(li);
+
+        document.getElementById(`user-id-${messages[i].id}`).innerHTML = messages[i].user.id;
+        document.getElementById(`user-name-${messages[i].id}`).innerHTML = messages[i].user.name;
+        document.getElementById(`message-date-${messages[i].id}`).innerHTML = messages[i].date;
+        document.getElementById(`select-link-${messages[i].id}`).setAttribute(`href`, `./admin-message-edit.html?id=${messages[i].id}`);
+        document.getElementById(`delete-function-${messages[i].id}`).setAttribute(`onclick`, `deleteMessageById(${messages[i].id})`);
+
+
     }
-  }
-  
-  
-  function getTemplate(messages, i) {
-  
-  
+}
+
+
+function getTemplate(messages, i) {
+
+
     const template = `
   
     <div class="block sm:flex items-center py-5 px-4 sm:py-6 sm:px-0">
@@ -80,7 +86,7 @@ function showAllMessages(messages) {
     </div>
 </div>
             `;
-  
-            return template;
-  
-  }
+
+    return template;
+
+}

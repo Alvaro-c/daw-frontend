@@ -34,11 +34,12 @@ function start() {
         
 
         if (response.email == email && response.password == password) {
-            let session = response.rol; // Session is created
             
-            window.location.href = "../admin.html"; 
+            document.cookie = `user=${response.id}&rol=${response.rol}`; // Session is created with the rol
+            window.location.href = "./index.html"; 
+            
         } else {
-            window.location.href = "../test.html";
+            window.location.href = "./test.html";
         }
 
     }

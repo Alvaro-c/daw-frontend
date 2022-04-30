@@ -2,8 +2,13 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    // Load data into the dropdown menus
-    loadInfo();
+    if (isAdmin()) {
+        // Load data into the dropdown menus
+        loadInfo();
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
 }
 

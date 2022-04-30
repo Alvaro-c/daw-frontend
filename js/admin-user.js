@@ -2,7 +2,13 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-  findAllUsers(showAllUsers);
+  if (isAdmin()) {
+
+    findAllUsers(showAllUsers);
+
+  } else {
+    window.location.href = "./index.html";
+  }
 
 }
 
@@ -24,7 +30,7 @@ function showAllUsers(users) {
 
     let img = document.createElement('img');
     img.setAttribute('class', 'h-12 w-12 rounded-full group-hover:opacity-75');
-    img.setAttribute('src', '../img/Ayuso.jpg');
+    img.setAttribute('src', './img/Ayuso.jpg');
     div1.appendChild(img);
     let p1 = document.createElement('p');
     p1.setAttribute('class', 'flex items-center ml-3 text-sm font-medium text-gray-700 truncate');
@@ -36,7 +42,7 @@ function showAllUsers(users) {
     li.appendChild(div2);
 
     let link = document.createElement('a');
-    link.setAttribute('href', `/admin-user-edit.html?id=${users[i].id}`)
+    link.setAttribute('href', `./admin-user-edit.html?id=${users[i].id}`)
     div2.appendChild(link);
 
     let button1 = document.createElement('button');

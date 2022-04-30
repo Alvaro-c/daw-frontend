@@ -47,7 +47,7 @@ function loadProduct() {
         document.getElementById('product-description').innerHTML = product.description;
         document.getElementById('product-price').innerHTML = product.price;
         let link = document.getElementById('booking-link');
-        link.setAttribute('href', `/booking-form.html?id=${id}`);
+        link.setAttribute('href', `./booking-form.html?id=${id}`);
 
 
     })

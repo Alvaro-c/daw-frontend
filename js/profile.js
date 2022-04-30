@@ -1,18 +1,24 @@
-window.addEventListener('DOMContentLoaded', start);
+document.addEventListener('DOMContentLoaded', start);
+
+const USERID = 6;
 
 function start() {
 
-    if(isAdmin()) {
-
-        findAllBookings(loadBookings);
-    } else {
-        window.location.href = "./index.html";
-    }
+    let userName = document.getElementById('user');
+    let userIdField = document.getElementById('id');
+    findUserById(USERID, (user)=>{
+        userName.innerHTML = user.name;
+        userIdField.innerHTML = user.id;
+        
+    })
+    //findAllBookings(loadBookings);
+    findBookingByUser(USERID, loadBookings);
 
 
 }
 
 function loadBookings(bookings) {
+    
 
     let ul = document.getElementById('last-bookings');
     let max = 0;
@@ -21,12 +27,15 @@ function loadBookings(bookings) {
 
     for (let i = 0; i < max; i++) {
 
-        let template = getTemplate(i, bookings);
+        let templateBookings = getTemplate(i, bookings);
         let li = document.createElement('li');
         li.setAttribute('class', 'py-5');
         li.setAttribute('if', `booking-id-${bookings[i].id}`);
-        li.innerHTML = template;
+        li.innerHTML = templateBookings;
         ul.appendChild(li);
+
+
+
 
 
     }
@@ -34,10 +43,10 @@ function loadBookings(bookings) {
 
 }
 
-
 function getTemplate(i, bookings) {
 
-    const template = ` 
+
+    const templateBookings = ` 
     <div class="relative focus-within:ring-2 focus-within:ring-cyan-500">
     <h3 class="text-sm font-semibold text-gray-800">
         <a href="./admin-booking-edit.html?id=${bookings[i].id}" class="hover:underline focus:outline-none">
@@ -51,16 +60,7 @@ function getTemplate(i, bookings) {
     <p class="mt-1 text-sm text-gray-600 line-clamp-2">Personas: <span id="people-${bookings[i].id}">A: ${bookings[i].adults}, N: ${bookings[i].children}</span></p>
     <p class="mt-1 text-sm text-gray-600 line-clamp-2">Fecha: <span id="date-${bookings[i].id}">${bookings[i].date}</span></p>
     <p class="mt-1 text-sm text-gray-600 line-clamp-2">Producto: <span id="name-${bookings[i].id}">${bookings[i].product.name}</span></p>
-</div>
-`;
+</div> `;
 
-    return template
-
+return templateBookings;
 }
-
-
-function readCookie(){
-    //console.log(sessionStorage.getItem("lastname"));
-    ;
-}
-readCookie()

@@ -273,13 +273,13 @@ function findBookingById(id, callBack) {
         })
 }
 
-function findBookingByUser(id) {
+function findBookingByUser(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/user/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }

@@ -2,7 +2,14 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    loadInfo();
+    if (isAdmin()) {
+
+        loadInfo();
+
+    } else {
+        window.location.href = "./index.html";
+    }
+
 
     document.getElementById('form').addEventListener('submit', submitForm);
 
@@ -12,7 +19,7 @@ function start() {
         let id = new URLSearchParams(window.location.search).get('id');
         let user = getFormInfo();
         editUser(id, user);
-        window.location.href = "../admin-user.html";
+        window.location.href = "./admin-user.html";
     }
 
     function getFormInfo() {
@@ -41,7 +48,7 @@ function start() {
 
         let id = new URLSearchParams(window.location.search).get('id');
         let user = findUserById(id, fillForm);
-        
+
         console.log(user);
 
         function fillForm(user) {

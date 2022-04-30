@@ -2,10 +2,16 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
+    if (isAdmin()) {
 
-    // Load data into the dropdown menus
-    findAllUsers(loadUsers);
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+        // Load data into the dropdown menus
+        findAllUsers(loadUsers);
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
     // Controll the form submission
     function submitForm(e) {
@@ -14,7 +20,7 @@ function start() {
         let message = getFormInfo();
         console.log(message);
         addMessage(message);
-        window.location.href = "../admin-message.html";
+        window.location.href = "./admin-message.html";
     }
 
     function getFormInfo() {
@@ -54,7 +60,7 @@ function loadUsers(users) {
 }
 
 
-function now(){
+function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());

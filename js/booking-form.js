@@ -57,7 +57,7 @@ function setCancelButton(){
 
     let id = new URLSearchParams(window.location.search).get('id'); 
     let cancelButton = document.getElementById('cancel-booking');
-    cancelButton.setAttribute('href', `/product.html?id=${id}`);
+    cancelButton.setAttribute('href', `./product.html?id=${id}`);
 
 }
 

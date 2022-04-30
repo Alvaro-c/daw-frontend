@@ -2,9 +2,17 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    loadInfo();
+    if (isAdmin()) {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
+        loadInfo();
+
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+    } else {
+        window.location.href = "./index.html";
+    }
+
+ 
 
     function submitForm(e) {
         e.preventDefault();
@@ -13,8 +21,8 @@ function start() {
         let product = getFormInfo();
 
         editProduct(id, product);
-        
-        window.location.href = "../admin-product.html";
+
+        window.location.href = "./admin-product.html";
     }
 
     function getFormInfo() {

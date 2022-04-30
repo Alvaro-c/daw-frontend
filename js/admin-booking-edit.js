@@ -2,12 +2,19 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
 
-    // Load data into the dropdown menus
-    findAllProducts(loadProducts);
-    findAllUsers(loadUsers);
-    loadInfo();
+    if (isAdmin()) {
+
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+        // Load data into the dropdown menus
+        findAllProducts(loadProducts);
+        findAllUsers(loadUsers);
+        loadInfo();
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
     // Controll the form submission
     function submitForm(e) {
@@ -16,7 +23,7 @@ function start() {
         let booking = getFormInfo();
         let id = new URLSearchParams(window.location.search).get('id');
         editBooking(id, booking);
-        window.location.href = "../admin-booking.html";
+        window.location.href = "./admin-booking.html";
     }
 
 
@@ -51,7 +58,7 @@ function start() {
     }
 
 
-    
+
     function loadInfo() {
 
         let id = new URLSearchParams(window.location.search).get('id');
