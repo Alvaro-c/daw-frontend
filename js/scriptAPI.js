@@ -183,6 +183,18 @@ function findProductById(id, callBack) {
         })
 }
 
+function findProductByDate(date, callBack) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/product/date/${date}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            callBack(result);
+        })
+
+}
+
 
 function addProduct(product) {
 
@@ -283,13 +295,13 @@ function findBookingByProduct(id) {
         })
 }
 
-function findBookingByDate(date) {
+function findBookingByDate(date, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/date/${date}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }

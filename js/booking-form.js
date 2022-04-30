@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', start);
 
 function start() {
+    setDatePicker()
     productRevAndFaq();
     loadProduct();
     setCancelButton();
@@ -89,9 +90,8 @@ function confirmBooking(e) {
 
 
     let avail = document.getElementById('current-avail').innerHTML;
-    console.log(parseInt(avail) > parseInt(adults+children));
 
-    if (parseInt(avail) > parseInt(adults+children)) {
+    if (parseInt(avail) >= parseInt(adults) + parseInt(children)) {
         newBooking(booking);
     }
 
@@ -136,4 +136,19 @@ function showAvail(){
     })
 
     
+}
+
+
+function setDatePicker(){
+    Date.prototype.toDateInputValue = (function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+    });
+    let datePicker = document.getElementById('date');
+
+    datePicker.value = new Date().toDateInputValue();
+    datePicker.setAttribute('min', new Date().toDateInputValue())
+
+
 }
