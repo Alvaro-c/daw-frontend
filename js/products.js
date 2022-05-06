@@ -40,11 +40,13 @@ function productsToGallery(products) {
         p1.innerHTML = `${products[i].description}`;
         let p2 = document.createElement(`p`);
         p2.setAttribute(`class`, `mt-2 font-medium text-gray-900`);
-        if (products[i].price != 'Libre'){
-            p2.innerHTML = `${products[i].price} €/persona`;
+
+        if (products[i].price == 'Libre' || products[i].price == 'No disponible'){
+            p2.innerHTML = `Precio: ${products[i].price}`;
         } else {
-            p2.innerHTML = `${products[i].price}`;
+            p2.innerHTML = `Precio: ${products[i].price} €/persona`;
         }
+
         
 
         gallery.appendChild(link);
@@ -115,7 +117,6 @@ function displayAvailableProducts() {
     function getPeople(bookings) {
 
         if (bookings.length < 1) {
-            console.log('flag - SIN reservas');
             findAllProducts(filterByPeople);
 
 
@@ -126,7 +127,8 @@ function displayAvailableProducts() {
                 for (let i = 0; i < products.length; i++) {
 
                     if(peopleRequested >= products[i].capacity) {
-                        products[i].description = 'COMPLETO'
+                        products[i].description = 'COMPLETO';
+                        products[i].price = 'No disponible'
                         
                         
                     }
@@ -138,7 +140,7 @@ function displayAvailableProducts() {
 
 
         } else {
-            console.log('flag - CON reservas');
+
             findAllProducts(filterProducts)
 
             function filterProducts(products) {
@@ -166,7 +168,8 @@ function displayAvailableProducts() {
                     if (products[i].capacity <= (people + parseInt(peopleRequested))) {
                         //console.log(`Se marca completo el tour ${products[i].id} con ${people} ya en reserva y ${peopleRequested} personas solicitadas. Tiene y una capacidad de ${products[i].capacity}`);
                         
-                        products[i].description = 'COMPLETO'
+                        products[i].description = 'COMPLETO';
+                        products[i].price = 'No disponible';
                     }
                     availableProducts.push(products[i])
 

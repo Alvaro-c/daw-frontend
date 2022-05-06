@@ -22,7 +22,7 @@ function menus() {
 
   }
 
-
+  favicon();
 
 
 
@@ -456,3 +456,12 @@ const footer = `    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:
 </div>
 <p class="mt-8 text-center text-base text-white">&copy; 2022 Alvaro Cañas. All rights reserved.</p>
 </div>`;
+
+
+function favicon(){
+
+  let link = document.createElement('link');
+  link.setAttribute('rel', 'icon');
+  link.setAttribute('href', './img/umbrella-transparent-148x121.png');
+  document.head.appendChild(link);
+}
