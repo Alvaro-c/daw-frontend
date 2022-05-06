@@ -35,7 +35,7 @@ function showAllProducts(products) {
 
 
     let p1 = document.createElement('p');
-    p1.setAttribute('class', 'flex items-center ml-3 text-sm font-medium text-gray-700 truncate');
+    p1.setAttribute('class', 'flex items-center ml-3 text-sm font-medium text-gray-700');
     p1.innerHTML = `${products[i].name}`;
     div1.appendChild(p1);
 

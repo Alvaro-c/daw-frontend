@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    if (isLoged()) {
+    if (isLoged() || isAdmin()) {
 
         document.getElementById('form').addEventListener('submit', submitForm);
 

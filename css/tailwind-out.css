@@ -10096,6 +10096,10 @@ textarea.form-control.is-invalid {
     width: auto;
   }
 
+  .sm\:w-1\/2 {
+    width: 50%;
+  }
+
   .sm\:max-w-3xl {
     max-width: 48rem;
   }
@@ -10307,6 +10311,10 @@ textarea.form-control.is-invalid {
 
   .md\:grid {
     display: grid;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
   }
 
   .md\:max-w-4xl {

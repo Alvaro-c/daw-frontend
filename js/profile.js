@@ -8,13 +8,15 @@ function start() {
     let userName = document.getElementById('user');
     let userIdField = document.getElementById('id');
     let editProfile = document.getElementById('editProfile');
+    let profilePhoto = document.getElementById('profile-photo');
     findUserById(userId, (user)=>{
         userName.innerHTML = user.name;
         userIdField.innerHTML = user.id;
         editProfile.setAttribute('href', `./user-edit-profile.html?id=${user.id}`)
+        profilePhoto.setAttribute('src', user.photo)
         
     })
-    //findAllBookings(loadBookings);
+
     findBookingByUser(userId, loadBookings);
     findMessageByUserId(userId, loadMessages);
 

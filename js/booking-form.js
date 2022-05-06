@@ -19,10 +19,7 @@ function start() {
 
         findUserById(userId, loadUser);
 
-    } else {
-        // If not, booking is associated with admin account
-        let userId = 6;
-    }
+    } 
 
 }
 
@@ -60,8 +57,7 @@ function loadProduct() {
     let id = new URLSearchParams(window.location.search).get('id');
     findProductById(id, (product) => {
 
-        let image = document.getElementById('product-image');
-        //TODO set image
+        document.getElementById('product-image').setAttribute('src', product.image);
         document.getElementById('product-name').innerHTML = product.name;
 
 
@@ -125,7 +121,7 @@ function confirmBooking(e) {
             let name = document.getElementById('name').value;
             let surname = document.getElementById('surname').value;
             let phone = '1234';
-            let email = 'test@test.com';
+            let email = document.getElementById('email').value;
             let password = 'default';
             let rol = 0;
 
@@ -146,7 +142,7 @@ function confirmBooking(e) {
                 'date': date,
                 'comments': comments,
                 'user': {
-                    'id': 6,
+                    'id': 6, // As placeholder, it is changed during the fetch request
                 },
                 'product': {
                     'id': id

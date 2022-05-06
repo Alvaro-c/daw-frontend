@@ -30,6 +30,7 @@ function showAllBookings(bookings) {
         li.setAttribute('id', `booking-${bookings[i].id}`);
         stackedList.appendChild(li);
 
+        document.getElementById(`image-${bookings[i].id}`).setAttribute('src', bookings[i].product.image);
         document.getElementById(`booking-id-${bookings[i].id}`).innerHTML = bookings[i].id;
         document.getElementById(`client-name-${bookings[i].id}`).innerHTML = bookings[i].user.name;
         document.getElementById(`tour-${bookings[i].id}`).innerHTML = bookings[i].product.name;
@@ -58,8 +59,7 @@ function getTemplate(bookings, i) {
           <div class="block sm:flex items-center py-5 px-4 sm:py-6 sm:px-0">
               <div class="min-w-0 flex-1 flex items-center">
                   <div class="flex-shrink-0">
-                      <img class="h-12 w-12 rounded-full group-hover:opacity-75"
-                          src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      <img id="image-${bookings[i].id}" class="h-12 w-12 rounded-full group-hover:opacity-75"
                           alt="">
                   </div>
                   <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">

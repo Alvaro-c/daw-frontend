@@ -50,7 +50,7 @@ function getTemplate(messages, i) {
     <div class="min-w-0 flex-1 flex items-center">
         <div class="flex-shrink-0">
             <img class="h-12 w-12 rounded-full group-hover:opacity-75"
-                src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                src="${messages[i].user.photo}"
                 alt="">
         </div>
         <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">

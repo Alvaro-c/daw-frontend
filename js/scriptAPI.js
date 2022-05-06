@@ -52,7 +52,7 @@ function editUser(id, user) {
         body: JSON.stringify(user)
     })
         .then((result) => {
-            console.log(result)
+            console.log('flag')
             return result;
         })
 }

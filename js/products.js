@@ -115,14 +115,35 @@ function displayAvailableProducts() {
     function getPeople(bookings) {
 
         if (bookings.length < 1) {
-            findAllProducts(productsToGallery);
-        } else {
+            console.log('flag - SIN reservas');
+            findAllProducts(filterByPeople);
 
+
+            function filterByPeople(products){
+
+                let availableProducts = [];
+                let peopleRequested = document.getElementById('people').value;
+                for (let i = 0; i < products.length; i++) {
+
+                    if(peopleRequested >= products[i].capacity) {
+                        products[i].description = 'COMPLETO'
+                        
+                        
+                    }
+                    availableProducts.push(products[i])
+                }
+
+                productsToGallery(availableProducts);
+            }
+
+
+        } else {
+            console.log('flag - CON reservas');
             findAllProducts(filterProducts)
 
             function filterProducts(products) {
 
-                let availableProducts = []
+                let availableProducts = [];
 
                 for (let i = 0; i < products.length; i++) {
                     // Tengo el producto
@@ -143,7 +164,7 @@ function displayAvailableProducts() {
                     let peopleRequested = document.getElementById('people').value;
 
                     if (products[i].capacity <= (people + parseInt(peopleRequested))) {
-                        console.log(`Se marca completo el tour ${products[i].id} con ${people} ya en reserva y ${peopleRequested} personas solicitadas. Tiene y una capacidad de ${products[i].capacity}`);
+                        //console.log(`Se marca completo el tour ${products[i].id} con ${people} ya en reserva y ${peopleRequested} personas solicitadas. Tiene y una capacidad de ${products[i].capacity}`);
                         
                         products[i].description = 'COMPLETO'
                     }

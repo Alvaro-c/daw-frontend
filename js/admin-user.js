@@ -30,10 +30,10 @@ function showAllUsers(users) {
 
     let img = document.createElement('img');
     img.setAttribute('class', 'h-12 w-12 rounded-full group-hover:opacity-75');
-    img.setAttribute('src', './img/Ayuso.jpg');
+    img.setAttribute('src', `${users[i].photo}`);
     div1.appendChild(img);
     let p1 = document.createElement('p');
-    p1.setAttribute('class', 'flex items-center ml-3 text-sm font-medium text-gray-700 truncate');
+    p1.setAttribute('class', 'flex items-center ml-3 text-sm font-medium text-gray-700 ');
     p1.innerHTML = `${users[i].name}`;
     div1.appendChild(p1);
 

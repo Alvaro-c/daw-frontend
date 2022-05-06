@@ -52,6 +52,7 @@ function encodeImageFileAsURL(element) {
 
     reader.onloadend = function () {
         image = reader.result
+        console.log(image);
     }
 
     reader.readAsDataURL(file);

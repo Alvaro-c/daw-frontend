@@ -41,8 +41,7 @@ function loadProduct() {
     let id = new URLSearchParams(window.location.search).get('id')
     findProductById(id, (product) => {
         
-        let image = document.getElementById('product-image');
-        //TODO set image
+        document.getElementById('product-image').setAttribute('src', product.image);
         document.getElementById('product-name').innerHTML = product.name;
         document.getElementById('product-description').innerHTML = product.description;
         document.getElementById('product-price').innerHTML = product.price;
