@@ -44,12 +44,4 @@ function start() {
 
     }
 
-    //document.getElementById('test').addEventListener('click', getUserSession)
-
-    function getUserSession(){
-        checkUserSession()
-
-    }
-
-
 }
