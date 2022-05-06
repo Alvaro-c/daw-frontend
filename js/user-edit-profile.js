@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', start);
 
+let currentRol;
+
 function start() {
     
     loadInfo();
@@ -31,6 +33,7 @@ function start() {
             'phone': phone,
             'email': email,
             'password': password,
+            'rol': currentRol
         }
 
         return user;
@@ -46,10 +49,11 @@ function start() {
 
         function fillForm(user) {
             document.getElementById('name').value = user.name;
-            document.getElementById('surname').value = user.name;
+            document.getElementById('surname').value = user.surname;
             document.getElementById('phone').value = user.phone;
             document.getElementById('email').value = user.email;
             document.getElementById('password').value = user.password;
+            currentRol = user.rol;
         }
 
 

@@ -73,9 +73,14 @@ function menus() {
   // Show admin options in menu
   if (isAdmin()) {
 
+    let user = document.cookie.split('&')[0];
+    let userId = user.split('=')[1];
+
     let menuOptions = `
     <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-0"></a>
+    <a href="./profile.html?id=${userId}" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+      id="user-menu-item-1">Perfil</a>
     <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
       id="user-menu-item-3">Cerrar Sesión</a>`;
 
@@ -97,7 +102,7 @@ function menus() {
 
 }
 
-const header = `    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+const header = ` <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
   <div class="flex">
 
@@ -118,9 +123,9 @@ const header = `    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <a id="tours" href="./products.html"
         class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
         Tours </a>
-      <a id="comer" href="./index.html"
+      <a id="comer" href="./contact.html"
         class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-        Dónde comer en Segovia </a>
+        Contacto </a>
     </div>
   </div>
   <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -245,7 +250,7 @@ const header = `    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       out</a>
   </div>
 </div>
-</div>`
+</div>`;
 
 const headerAdmin = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between h-16">
@@ -434,4 +439,4 @@ const footer = `    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:
 
 </div>
 <p class="mt-8 text-center text-base text-white">&copy; 2022 Alvaro Cañas. All rights reserved.</p>
-</div>`
+</div>`;

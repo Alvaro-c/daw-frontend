@@ -1,12 +1,29 @@
 window.addEventListener('DOMContentLoaded', start);
 
+let userId;
+
 function start() {
-    setDatePicker()
+    setDatePicker();
     productRevAndFaq();
     loadProduct();
     setCancelButton();
     document.getElementById('confirm-booking').addEventListener('click', confirmBooking);
-    showAvail()
+    showAvail();
+
+    console.log('loged', isLoged(), 'admin', isAdmin());
+
+    if (document.cookie.split('=')[1] != undefined) {
+        // If the user is registered
+        let user = document.cookie.split('&')[0];
+        userId = user.split('=')[1];
+
+        findUserById(userId, loadUser);
+
+    } else {
+        // If not, booking is associated with admin account
+        let userId = 6;
+    }
+
 }
 
 // Function to change between FAQ and Customer reviews
@@ -42,7 +59,7 @@ function loadProduct() {
 
     let id = new URLSearchParams(window.location.search).get('id');
     findProductById(id, (product) => {
-        
+
         let image = document.getElementById('product-image');
         //TODO set image
         document.getElementById('product-name').innerHTML = product.name;
@@ -53,9 +70,9 @@ function loadProduct() {
 
 }
 
-function setCancelButton(){
+function setCancelButton() {
 
-    let id = new URLSearchParams(window.location.search).get('id'); 
+    let id = new URLSearchParams(window.location.search).get('id');
     let cancelButton = document.getElementById('cancel-booking');
     cancelButton.setAttribute('href', `./product.html?id=${id}`);
 
@@ -64,40 +81,90 @@ function setCancelButton(){
 function confirmBooking(e) {
 
     e.preventDefault();
-    
+
     let id = new URLSearchParams(window.location.search).get('id');
 
     let adults = document.getElementById('adults').value;
     let children = document.getElementById('children').value;
     let date = document.getElementById('date').value;
     let comments = document.getElementById('comments').value;
-    let user = 6;
-    
-
-    let booking = {
-        'adults': adults,
-        'children': children,
-        'bookingDate': now(),
-        'date': date,
-        'comments': comments,
-        'user': {
-            'id': 6
-        },
-        'product': {
-            'id': id
-        }
-    }
+    let user = userId;
 
 
+    let booking;
     let avail = document.getElementById('current-avail').innerHTML;
 
     if (parseInt(avail) >= parseInt(adults) + parseInt(children)) {
-        newBooking(booking);
-    }
 
+
+        // If registered or admin, booking info from profile
+        if (isLoged() || isAdmin()) {
+
+            let user = document.cookie.split('&')[0];
+            userId = user.split('=')[1];
+
+            booking = {
+                'adults': adults,
+                'children': children,
+                'bookingDate': now(),
+                'date': date,
+                'comments': comments,
+                'user': {
+                    'id': userId,
+                },
+                'product': {
+                    'id': id
+                }
+            }
+
+            newBookingFromUser(booking);
+
+        } else {
+
+            // If not, new user is created
+            let name = document.getElementById('name').value;
+            let surname = document.getElementById('surname').value;
+            let phone = '1234';
+            let email = 'test@test.com';
+            let password = 'default';
+            let rol = 0;
+
+            let newUser = {
+
+                'name': name,
+                'surname': surname,
+                'phone': phone,
+                'email': email,
+                'password': password,
+                'rol': rol,
+            }
+
+            booking = {
+                'adults': adults,
+                'children': children,
+                'bookingDate': now(),
+                'date': date,
+                'comments': comments,
+                'user': {
+                    'id': 6,
+                },
+                'product': {
+                    'id': id
+                }
+
+            }
+
+
+            addUserAndBooking(newUser, booking);
+
+        }
+
+    } else {
+        document.getElementById('avail-error').innerHTML = 'No hay suficientes plazas libres';
+    }
 }
 
-function now(){
+function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -107,12 +174,14 @@ function now(){
     return new Date().toDateInputValue();
 }
 
-function showAvail(){
+function showAvail() {
     let id = new URLSearchParams(window.location.search).get('id');
     let date = document.getElementById('date');
     let avail;
 
-    date.addEventListener('change', ()=> {
+    date.addEventListener('change', () => {
+
+        document.getElementById('avail-error').innerHTML = '';
 
         let booking = {
             'date': date.value,
@@ -120,7 +189,7 @@ function showAvail(){
                 'id': id
             }
         }
-        
+
         let avail = getAvailability(booking, (result) => {
 
             let availField = document.getElementById('availability');
@@ -130,16 +199,16 @@ function showAvail(){
             let currentAvail = document.getElementById('current-avail');
             currentAvail.innerHTML = result;
         });
-        
+
 
 
     })
 
-    
+
 }
 
 
-function setDatePicker(){
+function setDatePicker() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -150,5 +219,44 @@ function setDatePicker(){
     datePicker.value = new Date().toDateInputValue();
     datePicker.setAttribute('min', new Date().toDateInputValue())
 
+
+}
+
+function loadUser(user) {
+
+
+    document.getElementById('name').value = user.name;
+    document.getElementById('surname').value = user.surname;
+
+
+}
+
+function thankYou() {
+
+    let form = document.getElementById('form');
+
+    form.innerHTML = ``;
+    form.innerHTML = `
+    <div class="mt-4">
+        <h1 id="product-name"
+            class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+            Tú reserva está confirmada. Muchas gracias por reservar con nosotros.
+        </h1>
+    </div>`;
+
+}
+
+function bookingError() {
+
+    let form = document.getElementById('form');
+
+    form.innerHTML = ``;
+    form.innerHTML = `
+    <div class="mt-4">
+        <h1 id="product-name"
+            class="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+            Lo sentimos, ha ocurrido un error, no se ha podido efectuar la reserva.
+        </h1>
+    </div>`;
 
 }

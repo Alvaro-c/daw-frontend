@@ -24,7 +24,6 @@ function isLoged(){
         // If so, return the user rol
         let cookieParams = document.cookie.split('&')[1];
         let rol = cookieParams.split('=')[1];
-
         if (rol == 0) {
             return true;
         }

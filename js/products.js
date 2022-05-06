@@ -7,7 +7,7 @@ function start() {
     //findAllProducts(productsToGallery);
     setDatePicker();
     filter();
-    fillPeople(20)
+    fillPeople(25)
     displayAvailableProducts();
 
     document.getElementById('people').addEventListener('change', displayAvailableProducts);
@@ -22,7 +22,7 @@ function productsToGallery(products) {
 
     for (let i = 0; i < products.length; i++) {
 
-
+        products[i].price == 0 ? products[i].price = 'Libre' :  products[i].price == products[i].price;
 
         let link = document.createElement(`a`);
         link.setAttribute(`href`, `./product.html?id=${products[i].id}`);
@@ -30,7 +30,7 @@ function productsToGallery(products) {
         let container3 = document.createElement(`div`);
         container3.setAttribute(`class`, `w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75`);
         let img = document.createElement(`img`);
-        img.setAttribute(`src`, `./img/Ayuso.jpg`);
+        img.setAttribute(`src`, `${products[i].image}`);
         img.setAttribute(`class`, `w-full h-full object-center object-cover`);
         let title = document.createElement(`h3`);
         title.setAttribute(`class`, `mt-4 font-medium text-gray-900">Nomad Pouch`);
@@ -40,7 +40,12 @@ function productsToGallery(products) {
         p1.innerHTML = `${products[i].description}`;
         let p2 = document.createElement(`p`);
         p2.setAttribute(`class`, `mt-2 font-medium text-gray-900`);
-        p2.innerHTML = `${products[i].price}`;
+        if (products[i].price != 'Libre'){
+            p2.innerHTML = `${products[i].price} €/persona`;
+        } else {
+            p2.innerHTML = `${products[i].price}`;
+        }
+        
 
         gallery.appendChild(link);
         link.appendChild(container3);

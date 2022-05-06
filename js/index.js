@@ -9,4 +9,5 @@ function start(){
 
     console.log('loged', isLoged(), 'admin', isAdmin());
 
+
 }

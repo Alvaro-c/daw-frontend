@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', start);
+let image;
 
 function start() {
 
@@ -25,18 +26,33 @@ function start() {
         let description = document.getElementById('description').value;
         let price = document.getElementById('price').value;
         let capacity = document.getElementById('capacity').value;
-        // let image = document.getElementById('image').files[0];
 
         let product = {
             'name': name,
             'description': description,
             'price': price,
             'capacity': capacity,
+            'image': image
         }
+
 
         return product;
 
     }
 
 
+
+
+}
+
+function encodeImageFileAsURL(element) {
+
+    let file = element.files[0];
+    let reader = new FileReader();
+
+    reader.onloadend = function () {
+        image = reader.result
+    }
+
+    reader.readAsDataURL(file);
 }

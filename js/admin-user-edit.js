@@ -31,6 +31,8 @@ function start() {
         let password = document.getElementById('password').value;
         let rol = document.getElementById('rol').value;
 
+ 
+
         let user = {
             'name': name,
             'surname': surname,
@@ -38,7 +40,7 @@ function start() {
             'email': email,
             'password': password,
             'rol': rol,
-        }
+        }  
 
         return user;
 
@@ -53,7 +55,7 @@ function start() {
 
         function fillForm(user) {
             document.getElementById('name').value = user.name;
-            document.getElementById('surname').value = user.name;
+            document.getElementById('surname').value = user.surname;
             document.getElementById('phone').value = user.phone;
             document.getElementById('email').value = user.email;
             document.getElementById('password').value = user.password;
