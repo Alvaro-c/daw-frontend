@@ -39,7 +39,7 @@ function start() {
             window.location.href = "./index.html"; 
             
         } else {
-            window.location.href = "./test.html";
+            window.location.href = "./index.html";
         }
 
     }
