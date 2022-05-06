@@ -1,0 +1,7 @@
+.hero {
+    text-shadow: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0px -1px 0px, rgb(0, 0, 0) 0px 1px 0px, rgb(0, 0, 0) -1px 0px 0px;
+}
+
+.no-shadow {
+    text-shadow: rgb(0, 0, 0) 0 0 0  
+}

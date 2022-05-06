@@ -2,12 +2,18 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
+    if (isAdmin()) {
 
-    // Load data into the dropdown menus
-    findAllProducts(loadProducts);
-    findAllUsers(loadUsers);
-    setDatePicker();
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+        // Load data into the dropdown menus
+        findAllProducts(loadProducts);
+        findAllUsers(loadUsers);
+        setDatePicker();
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
     // Controll the form submission
     function submitForm(e) {
@@ -15,7 +21,7 @@ function start() {
 
         let booking = getFormInfo();
         addBooking(booking);
-        window.location.href = "../admin-booking.html";
+        window.location.href = "./admin-booking.html";
     }
 
     function getFormInfo() {
@@ -80,7 +86,7 @@ function loadUsers(users) {
 }
 
 
-function setDatePicker(){
+function setDatePicker() {
 
     let datePicker = document.getElementById('date');
     datePicker.value = now();
@@ -88,7 +94,7 @@ function setDatePicker(){
 
 }
 
-function now(){
+function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());

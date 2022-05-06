@@ -2,14 +2,20 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
+    if (isAdmin()) {
+
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
     function submitForm(e) {
         e.preventDefault();
 
         let user = getFormInfo();
         addUser(user);
-        window.location.href = "../admin-user.html";
+        window.location.href = "./admin-user.html";
     }
 
     function getFormInfo() {

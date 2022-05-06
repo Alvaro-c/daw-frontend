@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
 
-  content: ["./*.{html,js}"],
+  content: ["./*.{html,js}", './**/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
   theme: {
     extend: {
       colors: {
@@ -18,5 +18,6 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/line-clamp'),
+    require('tw-elements/dist/plugin')
   ],
 }

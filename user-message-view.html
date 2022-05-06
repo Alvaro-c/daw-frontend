@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-white">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Tour Segovia</title>
+    <link rel="stylesheet" href="./css/tailwind-out.css">
+    <script src="./js/base-script.js"></script>
+    <script src="./js/access-controll.js"></script>
+    <script src="./js/scriptAPI.js"></script>
+    <script src="./js/user-message-view.js"></script>
+</head>
+
+<body class="h-full">
+
+    <!-- NavBar -->
+
+    <nav id="navbarAdmin" class="bg-amber-500 shadow">
+
+    </nav>
+
+    <!-- CONTENT -->
+
+
+    <header class="bg-white py-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 xl:flex xl:items-center xl:justify-between">
+            <div class="flex-1 min-w-0">
+                <h1 class="mt-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Mensaje</h1>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="bg-white py-4 px-4 sm:px-6 lg:col-span-3 lg:px-8 xl:pl-12 max-w-2xl mx-auto">
+        <div class="max-w-lg mx-auto lg:max-w-none">
+            <form id="form" action="#" method="POST" class="grid grid-cols-1 gap-y-6 pb-">
+
+                <div>
+                    <label for="body">Message</label>
+                    <textarea id="body" name="body" rows="4" disabled
+                        class="block w-full shadow-sm py-3 px-4 placeholder-gray-500 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"
+                        placeholder="Mensaje"></textarea>
+                </div>
+            </form>
+            <a href="./profile.html">
+                <div class="flex justify-end py-4">
+                    <button type="button"
+                        class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-sky-500 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Volver
+                        al perfil</button>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+
+    <footer id="footer" class="bg-amber-500">
+    
+    </footer>
+
+
+</body>
+
+</html>

@@ -52,7 +52,7 @@ function editUser(id, user) {
         body: JSON.stringify(user)
     })
         .then((result) => {
-            console.log(result)
+            console.log('flag')
             return result;
         })
 }
@@ -97,13 +97,13 @@ function findMessageById(id, callBack) {
 
 }
 
-function findMessageByUserId(id) {
+function findMessageByUserId(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/message/user_id/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
@@ -183,11 +183,22 @@ function findProductById(id, callBack) {
         })
 }
 
+function findProductByDate(date, callBack) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/product/date/${date}`)
+        .then((promise) => {
+            return promise.json();
+        })
+        .then((result) => {
+            callBack(result);
+        })
+
+}
+
 
 function addProduct(product) {
 
     let pjson = JSON.stringify(product)
-    console.log(product, typeof pjson);
     const request = fetch(`http://127.0.0.1:4000/api/product`, {
 
         method: 'POST',
@@ -199,7 +210,11 @@ function addProduct(product) {
 
 
     })
-        .then(resp => resp.json())
+        .then((resp) => {
+
+            console.log(resp);
+            return resp.json()
+        })
         .then((result) => {
             console.log(result);
             return result;
@@ -208,6 +223,7 @@ function addProduct(product) {
 }
 
 function editProduct(id, product) {
+
     fetch(`http://127.0.0.1:4000/api/product/${id}`, {
         method: 'PUT',
         headers: {
@@ -261,13 +277,13 @@ function findBookingById(id, callBack) {
         })
 }
 
-function findBookingByUser(id) {
+function findBookingByUser(id, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/user/${id}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
@@ -283,13 +299,13 @@ function findBookingByProduct(id) {
         })
 }
 
-function findBookingByDate(date) {
+function findBookingByDate(date, callBack) {
     const request = fetch(`http://127.0.0.1:4000/api/booking/date/${date}`)
         .then((promise) => {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+            callBack(result);
             return result;
         })
 }
@@ -339,3 +355,195 @@ function deleteBookingById(id) {
         })
 
 }
+
+
+// Making a booking
+
+function getAvailability(booking, callBack) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/availability`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(booking)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+            callBack(result);
+            return result;
+        })
+
+}
+
+function newBooking(booking) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/booking`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(booking)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
+}
+
+
+
+
+// Login controll
+
+function login(user, callBack) {
+    const request = fetch(`http://127.0.0.1:4000/api/login/access`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+        .then((resp) => {
+
+            //console.log(console.log(...resp.headers));
+            return resp.json()
+        })
+        .then((result) => {
+
+            callBack(result);
+            return result;
+        })
+
+}
+
+function checkUserSession() {
+    const request = fetch(`http://127.0.0.1:4000/api/login/test`)
+        .then(resp => resp.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+        })
+    // 
+}
+
+function newBookingFromUser(booking) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/booking`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(booking)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+            console.log(result);
+            return result;
+            
+        }).then((result) => {
+
+            console.log(!isNaN(result.id));
+            if (!isNaN(result.id)) {
+                console.log('callBack de thank you')
+                thankYou()
+                return result;
+              }
+              return Promise.reject(response); // catching the error
+        }).catch(() => {
+            console.log('callBack de error')
+            bookingError()
+        })
+
+
+}
+
+
+function addUserAndBooking(user, booking) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/user`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user)
+    })
+        .then(resp => resp.json())
+        .then((result) => {
+
+            booking = {
+
+                'adults': booking.adults,
+                'children': booking.children,
+                'bookingDate': booking.date,
+                'date': booking.date,
+                'comments': booking.comments,
+                'user': {
+                    'id': result.id,
+                },
+                'product': {
+                    'id': booking.product.id
+                }
+
+            }
+            
+            addBooking(booking)
+            return result;
+
+        }).then((result) => {
+
+            console.log(!isNaN(result.id));
+            if (!isNaN(result.id)) {
+                console.log('callBack de thank you')
+                thankYou()
+                return result;
+              }
+              return Promise.reject(response); // catching the error
+
+
+        }).catch(() => {
+            console.log('callBack de error')
+            bookingError()
+        })
+}
+
+
+// function to send the contact form to the email
+
+function newContactForm(form, callBack) {
+
+    const request = fetch(`http://127.0.0.1:4000/api/contact-form`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form)
+    })
+        .then(form => form.json())
+        .then((form) => {
+            callBack(form);
+            return form;
+        })
+}
+
+
+// Convert images
+
+function base64ToImage(base64) {
+    console.log(base64);
+
+    let image = new Image();
+    image.src = base64;
+    let element = document.createElement('img');
+    element.appendChild(image);
+
+    return element
+}
+

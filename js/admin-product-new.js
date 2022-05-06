@@ -1,15 +1,23 @@
 window.addEventListener('DOMContentLoaded', start);
+let image;
 
 function start() {
 
-    document.getElementById('form').addEventListener('submit', submitForm);
+    if (isAdmin()) {
+
+        document.getElementById('form').addEventListener('submit', submitForm);
+
+    } else {
+        window.location.href = "./index.html";
+    }
+
 
     function submitForm(e) {
         e.preventDefault();
 
         let product = getFormInfo();
         addProduct(product);
-        window.location.href = "../admin-product.html";
+        window.location.href = "./admin-product.html";
     }
 
     function getFormInfo() {
@@ -18,18 +26,34 @@ function start() {
         let description = document.getElementById('description').value;
         let price = document.getElementById('price').value;
         let capacity = document.getElementById('capacity').value;
-        // let image = document.getElementById('image').files[0];
 
         let product = {
             'name': name,
             'description': description,
             'price': price,
             'capacity': capacity,
+            'image': image
         }
+
 
         return product;
 
     }
 
 
+
+
+}
+
+function encodeImageFileAsURL(element) {
+
+    let file = element.files[0];
+    let reader = new FileReader();
+
+    reader.onloadend = function () {
+        image = reader.result
+        console.log(image);
+    }
+
+    reader.readAsDataURL(file);
 }

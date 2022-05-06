@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Tour Segovia</title>
+    <link rel="stylesheet" href="./css/tailwind-out.css">
+    <script src="./js/base-script.js"></script>
+    <script src="./js/access-controll.js"></script>
+    <script src="./js/scriptAPI.js"></script>
+    <script src="./js/profile.js"></script>
+</head>
+
+<body class="h-full">
+
+    <!-- NavBar -->
+
+    <nav id="navbar" class="bg-amber-500 shadow">
+
+    </nav>
+
+    <!-- CONTENT -->
+
+    <div class="min-h-full">
+        <main class="py-8">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                <h1 class="sr-only">Profile</h1>
+                <!-- Main 3 column grid -->
+                <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
+                    <!-- Left column -->
+                    <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+                        <!-- Welcome panel -->
+                        <section aria-labelledby="profile-overview-title">
+                            <div class="rounded-lg bg-white overflow-hidden shadow">
+                                <h2 class="sr-only" id="profile-overview-title">Profile Overview</h2>
+                                <div class="bg-white p-6">
+                                    <div class="sm:flex sm:items-center sm:justify-between">
+                                        <div class="sm:flex sm:space-x-5">
+                                            <div class="flex-shrink-0">
+                                                <img id="profile-photo" class="mx-auto h-20 w-20 rounded-full" alt="">
+                                            </div>
+                                            <div class="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
+                                                <p id="user" class="text-xl font-bold text-gray-900 sm:text-2xl"></p>
+                                                <p  class="text-sm font-medium text-gray-600">ID: <span id="id"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Actions panel -->
+                        <section aria-labelledby="quick-links-title">
+                            <div
+                                class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+                                <h2 class="sr-only" id="quick-links-title">Quick links</h2>
+
+                                <div
+                                    class="rounded-tl-lg rounded-tr-lg sm:rounded-tr-none relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500">
+                                    <div>
+                                        <span
+                                            class="rounded-lg inline-flex p-3 bg-teal-50 text-teal-700 ring-4 ring-white">
+                                            <!-- Heroicon name: outline/clock -->
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="mt-8">
+                                        <h3 class="text-lg font-medium">
+                                            <a id="editProfile"  class="focus:outline-none">
+                                                <!-- Extend touch target to entire panel -->
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                Editar Perfil
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <span
+                                        class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                                        aria-hidden="true">
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                                        </svg>
+                                    </span>
+                                </div>
+
+
+                                <div
+                                    class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-500">
+                                    <div>
+                                        <span
+                                            class="rounded-lg inline-flex p-3 bg-yellow-50 text-yellow-700 ring-4 ring-white">
+                                            <!-- Heroicon name: outline/cash -->
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="mt-8">
+                                        <h3 class="text-lg font-medium">
+                                            <a href="./user-message-new.html" class="focus:outline-none">
+                                                <!-- Extend touch target to entire panel -->
+                                                <span class="absolute inset-0" aria-hidden="true"></span>
+                                                Contacta con nosotros
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <span
+                                        class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+                                        aria-hidden="true">
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
+                                        </svg>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Right column -->
+                    <div class="grid grid-cols-1 gap-4">
+                        <!-- Announcements -->
+                        <section aria-labelledby="announcements-title">
+                            <div class="rounded-lg bg-white overflow-hidden shadow">
+                                <div class="p-6">
+                                    <h2 class="text-base font-medium text-gray-900" id="announcements-title">
+                                        Reservas Confirmadas</h2>
+                                    <div class="flow-root mt-6">
+                                        <ul id="last-bookings" role="list" class="-my-5 divide-y divide-gray-200">
+
+                                        </ul>
+                                    </div>
+                                    <div class="mt-6">
+                                        <a href="./user-booking.html"
+                                            class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-white bg-sky-500 hover:bg-sky-700">
+                                            Ver todas </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Recent Messages -->
+                        <section aria-labelledby="recent-hires-title">
+                            <div class="rounded-lg bg-white overflow-hidden shadow">
+                                <div class="p-6">
+                                    <h2 class="text-base font-medium text-gray-900" id="recent-hires-title">Últimos
+                                        mensajes
+                                    </h2>
+                                    <div class="flow-root mt-6">
+                                        <ul id="last-messages" role="list" class="-my-5 divide-y divide-gray-200">
+
+                                        </ul>
+                                    </div>
+                                    <div class="mt-6">
+                                        <a href="#"
+                                            class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                            View all </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+
+
+
+    <!-- Footer -->
+
+    <footer id="footer" class="bg-amber-500">
+    
+    </footer>
+
+
+</body>
+
+</html>

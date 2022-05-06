@@ -6,8 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Tour Segovia</title>
-  <link rel="stylesheet" href="/css/tailwind-out.css">
-  <script src="js/base-script.js"></script>
+  <link rel="stylesheet" href="./css/tailwind-out.css">
+  <script src="./js/access-controll.js"></script>
+  <script src="./js/base-script.js"></script>
 </head>
 
 <body>
@@ -18,24 +19,27 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
-          <div class="flex-shrink-0 flex items-center">
+
+          <a href="./index.html" class="flex-shrink-0 flex items-center">
             <!-- Logo -->
 
-            <img class="block h-12 w-auto"
-              src="/assets/images/umbrella-transparent-148x121.png" alt="FreeTourSegovia"> 
+              <img class="block h-12 w-auto" src="./img/umbrella-transparent-148x121.png"
+                alt="FreeTourSegovia">
               <span class="mx-3 text-white text-lg font-bold">FreeTourSegovia</span>
-          </div>
+            
+          </a>
+
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: Default: "border-transparent text-white hover:border-sky-500 hover:text-white" -->
-            <a href="#"
-              class="border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a id="home" href="./index.html"
+              class="border-transparent hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               Home </a>
-            <a href="#"
-              class="border-transparent text-white hover:border-sky-500 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+            <a id="tours" href="./products.html"
+              class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
               Tours </a>
-            <a href="#"
-              class="border-transparent text-white hover:border-sky-500 hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Dónde comer en Segovia </a>
+            <a id="comer" href="./contact.html"
+              class="border-transparent text-white hover:border-sky-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Contacto </a>
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -57,8 +61,7 @@
                 class="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                <img id="navbar-photo" class="h-8 w-8 rounded-full"
                   alt="">
               </button>
             </div>
@@ -73,16 +76,12 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-            <div
-              class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+            <div id="userMenu"
+              class="z-10 hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
               <!-- Active: "bg-gray-100", Not Active: "" -->
-              <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                id="user-menu-item-0">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                id="user-menu-item-1">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
-                id="user-menu-item-2">Sign out</a>
+              <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+                id="user-menu-item-0">Login</a>
             </div>
           </div>
         </div>
@@ -123,23 +122,22 @@
     <div class="hidden bg-white" id="mobile-menu">
       <div class="pt-2 pb-3 space-y-1">
         <!-- Current: "bg-indigo-50 border-sky-500 text-indigo-700", Default: "border-transparent text-white hover:bg-gray-50 hover:border-sky-500 hover:text-white" -->
-        <a href="#"
+        <a href="./index.html"
           class="bg-indigo-50 border-sky-500 text-sky-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-        <a href="#"
+        <a href="./products.html"
           class="border-transparent text-sky-800 hover:bg-gray-50 hover:border-sky-500  block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Tours</a>
-        <a href="#"
-          class="border-transparent text-sky-800 hover:bg-gray-50 hover:border-sky-500  block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dónde comer en Segovia</a>
+        <a href="./contact.html"
+          class="border-transparent text-sky-800 hover:bg-gray-50 hover:border-sky-500  block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contacto</a>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-200">
         <div class="flex items-center px-4">
           <div class="flex-shrink-0">
-            <img class="h-10 w-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            <img id="navbar-photo-mobile" class="h-10 w-10 rounded-full"
               alt="">
           </div>
           <div class="ml-3">
-            <div class="text-base font-medium text-gray-800">Tom Cook</div>
-            <div class="text-sm font-medium text-sky-800">tom@example.com</div>
+            <div id="user-name" class="text-base font-medium text-gray-800"></div>
+            
           </div>
           <button type="button"
             class="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
@@ -152,15 +150,9 @@
             </svg>
           </button>
         </div>
-        <div class="mt-3 space-y-1">
-          <a href="#"
-            class="block px-4 py-2 text-base font-medium text-sky-800 hover:text-gray-800 hover:bg-gray-100">Your
-            Profile</a>
-          <a href="#"
-            class="block px-4 py-2 text-base font-medium text-sky-800 hover:text-gray-800 hover:bg-gray-100">Settings</a>
-          <a href="#"
-            class="block px-4 py-2 text-base font-medium text-sky-800 hover:text-gray-800 hover:bg-gray-100">Sign
-            out</a>
+        <div id="userMenuMobile" class="mt-3 space-y-1">
+          <a href="./login.html" class="block px-4 py-2 text-sm text-black" role="menuitem" tabindex="-1"
+          id="user-menu-item-0-mobile">Login</a>
         </div>
       </div>
     </div>
@@ -169,6 +161,7 @@
   <!-- CONTENT -->
 
 
+  <div class="bg-wite h-20"></div>
 
 
 
@@ -176,35 +169,25 @@
 
   <!-- Footer -->
 
-  <footer class="bg-amber-500">
+  <footer  class="bg-amber-500">
     <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
       <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
         <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> About </a>
+          <a href="./index.html" class="text-base text-white hover:text-white"> Home </a>
         </div>
-
+      
         <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> Blog </a>
+          <a href="./products.html" class="text-base text-white hover:text-white"> Tours </a>
         </div>
-
+      
         <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> Jobs </a>
+          <a href="./contact.html" class="text-base text-white hover:text-white"> Contacto </a>
         </div>
+      
 
-        <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> Press </a>
-        </div>
-
-        <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> Accessibility </a>
-        </div>
-
-        <div class="px-5 py-2">
-          <a href="#" class="text-base text-white hover:text-white"> Partners </a>
-        </div>
       </nav>
       <div class="mt-8 flex justify-center space-x-6">
-        <a href="#" class="text-white hover:text-white">
+        <a href="https://www.facebook.com/Free-Tour-Segovia-102638431518230" class="text-white hover:text-white">
           <span class="sr-only">Facebook</span>
           <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd"
@@ -212,8 +195,8 @@
               clip-rule="evenodd" />
           </svg>
         </a>
-
-        <a href="#" class="text-white hover:text-white">
+      
+        <a href="https://www.instagram.com/freetoursegovia/" class="text-white hover:text-white">
           <span class="sr-only">Instagram</span>
           <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd"
@@ -222,15 +205,8 @@
           </svg>
         </a>
 
-        <a href="#" class="text-white hover:text-white">
-          <span class="sr-only">Twitter</span>
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-          </svg>
-        </a>
-
-        <a href="#" class="text-white hover:text-white">
+      
+        <a href="https://github.com/Alvaro-c" class="text-white hover:text-white">
           <span class="sr-only">GitHub</span>
           <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd"
@@ -239,17 +215,9 @@
           </svg>
         </a>
 
-        <a href="#" class="text-white hover:text-white">
-          <span class="sr-only">Dribbble</span>
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd"
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
-              clip-rule="evenodd" />
-          </svg>
-        </a>
       </div>
-      <p class="mt-8 text-center text-base text-white">&copy; 2020 Workflow, Inc. All rights reserved.</p>
-    </div>
+      <p class="mt-8 text-center text-base text-white">&copy; 2022 Alvaro Cañas. All rights reserved.</p>
+      </div>
   </footer>
 
 

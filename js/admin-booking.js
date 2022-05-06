@@ -2,58 +2,64 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-  findAllBookings(showAllBookings);
+    if (isAdmin()) {
+
+        findAllBookings(showAllBookings);
+
+    } else {
+        window.location.href = "./index.html";
+    }
 
 }
 
 function showAllBookings(bookings) {
 
-  console.log(bookings);
+    console.log(bookings);
 
-  let stackedList = document.getElementById('booking-list');
-  stackedList.innerHTML = ``;
-
-
-
-  for (let i = 0; i < bookings.length; i++) {
-
-    let template = getTemplate(bookings, i);
-
-    let li = document.createElement('li');
-    li.innerHTML = template;
-    li.setAttribute('id', `booking-${bookings[i].id}`);
-    stackedList.appendChild(li);
-
-    document.getElementById(`booking-id-${bookings[i].id}`).innerHTML = bookings[i].id;
-    document.getElementById(`client-name-${bookings[i].id}`).innerHTML = bookings[i].user.name;
-    document.getElementById(`tour-${bookings[i].id}`).innerHTML = bookings[i].product.name;
-    document.getElementById(`email-${bookings[i].id}`).innerHTML = bookings[i].user.email;
-    document.getElementById(`phone-${bookings[i].id}`).innerHTML = bookings[i].user.phone;
-    document.getElementById(`visit-date-${bookings[i].id}`).innerHTML = bookings[i].date;
-    document.getElementById(`booking-date-${bookings[i].id}`).innerHTML = bookings[i].bookingDate;
-    document.getElementById(`adults-${bookings[i].id}`).innerHTML = bookings[i].adults;
-    document.getElementById(`children-${bookings[i].id}`).innerHTML = bookings[i].children;
-    document.getElementById(`edit-link-${bookings[i].id}`).setAttribute(`href`, `/admin-booking-edit.html?id=${bookings[i].id}`);
-    document.getElementById(`delete-function-${bookings[i].id}`).setAttribute(`onclick`, `deleteBookingById(${bookings[i].id})`);
+    let stackedList = document.getElementById('booking-list');
+    stackedList.innerHTML = ``;
 
 
 
+    for (let i = 0; i < bookings.length; i++) {
+
+        let template = getTemplate(bookings, i);
+
+        let li = document.createElement('li');
+        li.innerHTML = template;
+        li.setAttribute('id', `booking-${bookings[i].id}`);
+        stackedList.appendChild(li);
+
+        document.getElementById(`image-${bookings[i].id}`).setAttribute('src', bookings[i].product.image);
+        document.getElementById(`booking-id-${bookings[i].id}`).innerHTML = bookings[i].id;
+        document.getElementById(`client-name-${bookings[i].id}`).innerHTML = bookings[i].user.name;
+        document.getElementById(`tour-${bookings[i].id}`).innerHTML = bookings[i].product.name;
+        document.getElementById(`email-${bookings[i].id}`).innerHTML = bookings[i].user.email;
+        document.getElementById(`phone-${bookings[i].id}`).innerHTML = bookings[i].user.phone;
+        document.getElementById(`visit-date-${bookings[i].id}`).innerHTML = bookings[i].date;
+        document.getElementById(`booking-date-${bookings[i].id}`).innerHTML = bookings[i].bookingDate;
+        document.getElementById(`adults-${bookings[i].id}`).innerHTML = bookings[i].adults;
+        document.getElementById(`children-${bookings[i].id}`).innerHTML = bookings[i].children;
+        document.getElementById(`edit-link-${bookings[i].id}`).setAttribute(`href`, `./admin-booking-edit.html?id=${bookings[i].id}`);
+        document.getElementById(`delete-function-${bookings[i].id}`).setAttribute(`onclick`, `deleteBookingById(${bookings[i].id})`);
 
 
-  }
+
+
+
+    }
 }
 
 
 function getTemplate(bookings, i) {
 
 
-  const template = `
+    const template = `
 
           <div class="block sm:flex items-center py-5 px-4 sm:py-6 sm:px-0">
               <div class="min-w-0 flex-1 flex items-center">
                   <div class="flex-shrink-0">
-                      <img class="h-12 w-12 rounded-full group-hover:opacity-75"
-                          src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      <img id="image-${bookings[i].id}" class="h-12 w-12 rounded-full group-hover:opacity-75"
                           alt="">
                   </div>
                   <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-3 md:gap-4">
@@ -130,6 +136,6 @@ function getTemplate(bookings, i) {
           </div>
           `;
 
-          return template;
+    return template;
 
 }
