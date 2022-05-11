@@ -116,8 +116,10 @@
                             <label for="date" class="block text-sm font-medium text-gray-700">Fecha de visita *</label>
                             <input type="date" name="date" id="date" autocomplete="Date" required
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        <p id="availability" class="hidden">Hay <span id="current-avail"></span> plazas disponibles para el día seleccionado</p>
-                            <span id="avail-error" class="text-red"></span> </div>
+                            <p id="availability" class="hidden">Hay <span id="current-avail"></span> plazas disponibles
+                                para el día seleccionado</p>
+                            <span id="avail-error" class="text-red-500"></span>
+                        </div>
 
                         <div class="grid grid-cols-2 gap-5">
                             <div class="">
@@ -162,6 +164,16 @@
                             <textarea name="comments" id="comments" autocomplete="Comments"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"> </textarea>
                         </div>
+
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="comments" class="block text-sm font-medium text-gray-700">Pregunta de seguridad:
+                                Cuanto es <span id="num1"></span> + <span id="num2"></span>
+                            </label>
+                            <input type="number" name="captcha" id="captcha" autocomplete="captcha" required
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <span id="captcha-error" class="text-red-500"></span> 
+                        </div>
+
 
 
                         <div class="flex justify-end">
@@ -361,7 +373,7 @@
     <!-- Footer -->
 
     <footer id="footer" class="bg-amber-500">
-    
+
     </footer>
 
 

@@ -9,6 +9,7 @@ function start() {
     setCancelButton();
     document.getElementById('confirm-booking').addEventListener('click', confirmBooking);
     showAvail();
+    loadCaptcha();
 
     console.log('loged', isLoged(), 'admin', isAdmin());
 
@@ -19,7 +20,7 @@ function start() {
 
         findUserById(userId, loadUser);
 
-    } 
+    }
 
 }
 
@@ -77,6 +78,8 @@ function setCancelButton() {
 function confirmBooking(e) {
 
     e.preventDefault();
+    console.log(e);
+    document.getElementById('form').checkValidity();
 
     let id = new URLSearchParams(window.location.search).get('id');
 
@@ -90,7 +93,18 @@ function confirmBooking(e) {
     let booking;
     let avail = document.getElementById('current-avail').innerHTML;
 
+
+
     if (parseInt(avail) >= parseInt(adults) + parseInt(children)) {
+
+        if (!captcha()) {
+            document.getElementById('captcha-error').innerHTML = 'Revisa tu respuesta';
+            return
+        }
+
+        if(!formValidation()){
+            return
+        }
 
 
         // If registered or admin, booking info from profile
@@ -174,11 +188,14 @@ function now() {
 }
 
 function showAvail() {
+
     let id = new URLSearchParams(window.location.search).get('id');
     let date = document.getElementById('date');
     let avail;
 
-    date.addEventListener('change', () => {
+    date.addEventListener('change', updateAvail);
+
+    function updateAvail() {
 
         document.getElementById('avail-error').innerHTML = '';
 
@@ -200,8 +217,8 @@ function showAvail() {
         });
 
 
-
-    })
+    }
+    updateAvail();
 
 
 }
@@ -259,3 +276,46 @@ function bookingError() {
     </div>`;
 
 }
+
+function loadCaptcha() {
+
+    document.getElementById('num1').innerHTML = Math.floor(Math.random() * (0 - 5 + 1) + 5);
+    document.getElementById('num2').innerHTML = Math.floor(Math.random() * (0 - 5 + 1) + 5);
+}
+
+function captcha() {
+
+    let num1 = document.getElementById('num1').innerHTML
+    let num2 = document.getElementById('num2').innerHTML
+    let captcha = document.getElementById('captcha').value;
+
+    if (captcha == (parseInt(num1) + parseInt(num2))) {
+        return true;
+    }
+    return false
+
+}
+
+function formValidation() {
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+
+    if (name == '') {
+        return false
+    }
+    if (email == '') {
+        return false
+    }
+    if (!validateEmail(email)) {
+        return false
+    }
+    return true
+}
+
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+};

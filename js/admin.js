@@ -4,9 +4,16 @@ function start() {
 
     if (isAdmin()) {
 
+        let user = document.cookie.split('&')[0];
+        let userId = user.split('=')[1];
+
         findAllBookings(loadBookings);
         findAllMessages(loadMessages);
         analytics()
+
+        findUserById(userId, adminInfo);
+
+
     } else {
         window.location.href = "./index.html";
     }
@@ -138,4 +145,7 @@ function analytics() {
 
 }
 
-
+function adminInfo(user) {
+    let name = document.getElementById('admin-name');
+    name.innerHTML = user.name;
+}

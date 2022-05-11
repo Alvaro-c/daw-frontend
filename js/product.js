@@ -44,7 +44,12 @@ function loadProduct() {
         document.getElementById('product-image').setAttribute('src', product.image);
         document.getElementById('product-name').innerHTML = product.name;
         document.getElementById('product-description').innerHTML = product.description;
-        document.getElementById('product-price').innerHTML = product.price;
+        console.log(product.price);
+        if(product.price != 0) {
+            document.getElementById('product-price').innerHTML = `${product.price}€`;
+        } else {
+            document.getElementById('product-price').innerHTML = 'Libre';
+        }
         let link = document.getElementById('booking-link');
         link.setAttribute('href', `./booking-form.html?id=${id}`);
 

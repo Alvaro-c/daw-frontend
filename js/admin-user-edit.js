@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', start);
-
+let photo;
 function start() {
 
     if (isAdmin()) {
@@ -40,6 +40,7 @@ function start() {
             'email': email,
             'password': password,
             'rol': rol,
+            'photo': photo
         }  
 
         return user;
@@ -50,8 +51,7 @@ function start() {
 
         let id = new URLSearchParams(window.location.search).get('id');
         let user = findUserById(id, fillForm);
-
-        console.log(user);
+        
 
         function fillForm(user) {
             document.getElementById('name').value = user.name;
@@ -60,6 +60,7 @@ function start() {
             document.getElementById('email').value = user.email;
             document.getElementById('password').value = user.password;
             document.getElementById('rol').value = user.rol;
+            photo = user.photo
         }
 
 
