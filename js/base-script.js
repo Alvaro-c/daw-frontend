@@ -23,6 +23,7 @@ function menus() {
 
   }
 
+  // Load the favicon for all tabs
   favicon();
 
 
@@ -125,6 +126,7 @@ function menus() {
 
   }
 
+  // If user is not logued, this function set a default image for the profile
   if (!isLoged() && !isAdmin()) {
 
     // Set profile photos in navbar
@@ -439,7 +441,7 @@ const footer = `    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:
 <p class="mt-8 text-center text-base text-white">&copy; 2022 Alvaro Cañas. All rights reserved.</p>
 </div>`;
 
-
+// Function to change the favicon (the tumbnail image on the tab that is an umbrella)
 function favicon(){
 
   let link = document.createElement('link');

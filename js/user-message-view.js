@@ -14,6 +14,7 @@ function start() {
 }
 
 
+// Loads the information of the object that is being edited into the form
 function loadInfo() {
 
     let id = new URLSearchParams(window.location.search).get('id');

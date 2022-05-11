@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Event listener and function to send the email from contact page
     document.getElementById('submit').addEventListener('click', (e) => {
 
         e.preventDefault();
@@ -28,6 +29,7 @@ function start() {
 
     })
 
+    // If the message has been sent successfully, this function is called to show a thank you message
     function thankYou(){
 
         

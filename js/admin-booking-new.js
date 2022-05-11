@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         document.getElementById('form').addEventListener('submit', submitForm);
@@ -25,6 +26,7 @@ function start() {
         window.location.href = "./admin-booking.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let product = document.getElementById('product').value;
@@ -59,6 +61,7 @@ function start() {
 
 }
 
+// Get info from products and load them into HTML
 function loadProducts(products) {
 
     let select = document.getElementById('product');
@@ -73,6 +76,7 @@ function loadProducts(products) {
 
 }
 
+// Get info from users and load them into HTML
 function loadUsers(users) {
 
     let select = document.getElementById('client');
@@ -86,7 +90,7 @@ function loadUsers(users) {
 
 }
 
-
+// Sets todays date on the input type date
 function setDatePicker() {
 
     let datePicker = document.getElementById('date');
@@ -95,6 +99,7 @@ function setDatePicker() {
 
 }
 
+// Gives today date in input type date format
 function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);

@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 let photo;
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         loadInfo();
@@ -14,6 +15,7 @@ function start() {
 
     document.getElementById('form').addEventListener('submit', submitForm);
 
+    // Handles form submission
     function submitForm(e) {
         e.preventDefault();
 
@@ -23,6 +25,7 @@ function start() {
         window.location.href = "./admin-user.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let name = document.getElementById('name').value;
@@ -48,6 +51,7 @@ function start() {
 
     }
 
+    // Loads the information of the object that is being edited into the form
     function loadInfo() {
 
         let id = new URLSearchParams(window.location.search).get('id');

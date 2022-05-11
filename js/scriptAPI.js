@@ -1,4 +1,5 @@
-
+// This script handles every request to backend
+// Name of each function defines what it does
 
 
 // CRUD functions for USER

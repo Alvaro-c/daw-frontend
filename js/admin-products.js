@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+  // Check user permissions, if so load the rest of functions, if not, redirects to index
   if (isAdmin()) {
 
     findAllProducts(showAllProducts);
@@ -14,6 +15,7 @@ function start() {
 
 }
 
+// Load all products into the HTML
 function showAllProducts(products) {
 
   let stackedList = document.getElementById('product-list');

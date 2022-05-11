@@ -24,6 +24,7 @@ function start() {
 
 }
 
+// Function to load from 0 to 3 last bookings
 function loadBookings(bookings) {
     
 
@@ -50,6 +51,7 @@ function loadBookings(bookings) {
 
 }
 
+// Function to get the HTML template were bookings will be loaded
 function getTemplate(i, bookings) {
 
 
@@ -74,6 +76,7 @@ return templateBookings;
 
 
 
+// Function to load from 0 to 3 last messages
 function loadMessages(messages) {
 
     let ul = document.getElementById('last-messages');
@@ -99,7 +102,7 @@ function loadMessages(messages) {
 
 }
 
-
+// Function to get the HTML template were messages will be loaded
 function getMessageTemplate(i, messages) {
 
     let template = ` <li class="py-4">

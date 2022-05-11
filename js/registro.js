@@ -7,6 +7,7 @@ function start() {
 
 }
 
+// Sign up a new user
 function send(e) {
 
     e.preventDefault()

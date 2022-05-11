@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         findAllBookings(showAllBookings);
@@ -13,6 +14,7 @@ function start() {
 
 }
 
+// Load all bookings into HTML
 function showAllBookings(bookings) {
 
 
@@ -51,6 +53,7 @@ function showAllBookings(bookings) {
 }
 
 
+// Creates a template in HTML for each booking with ad-hoc ids
 function getTemplate(bookings, i) {
 
 

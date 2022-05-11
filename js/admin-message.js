@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         findAllMessages(showAllMessages);
@@ -13,6 +14,7 @@ function start() {
 
 }
 
+// Load all messsages into HTML
 function showAllMessages(messages) {
 
     let stackedList = document.getElementById('message-list');
@@ -39,7 +41,7 @@ function showAllMessages(messages) {
     }
 }
 
-
+// Creates a template with ad-hoc ids for each message to be populated into HTML
 function getTemplate(messages, i) {
 
 

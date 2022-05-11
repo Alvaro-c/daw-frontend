@@ -6,7 +6,7 @@ function start() {
 
     document.getElementById('login-form').addEventListener('submit', submitForm);
 
-
+    // Function to handle form submission
     function submitForm(e) {
         e.preventDefault();
 
@@ -15,6 +15,7 @@ function start() {
 
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
@@ -28,6 +29,7 @@ function start() {
 
     }
 
+    // Check if data is correct and if so, session cookie is created
     function checkAccess(response) {
 
         let email = document.getElementById('email').value;

@@ -52,6 +52,7 @@ function productRevAndFaq() {
 
 }
 
+// Load information of the product in the HTML
 function loadProduct() {
 
     let id = new URLSearchParams(window.location.search).get('id');
@@ -66,6 +67,7 @@ function loadProduct() {
 
 }
 
+// Set the route for the cancel button to go to previous profile page
 function setCancelButton() {
 
     let id = new URLSearchParams(window.location.search).get('id');
@@ -74,6 +76,8 @@ function setCancelButton() {
 
 }
 
+
+// Function to check information loaded in the form and submit it as booing after info is validated
 function confirmBooking(e) {
 
     e.preventDefault();
@@ -175,6 +179,8 @@ function confirmBooking(e) {
     }
 }
 
+
+// Gives today date in input type date format
 function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
@@ -185,6 +191,8 @@ function now() {
     return new Date().toDateInputValue();
 }
 
+
+// Function that show how many people can book for a specific date
 function showAvail() {
 
     let id = new URLSearchParams(window.location.search).get('id');
@@ -221,7 +229,7 @@ function showAvail() {
 
 }
 
-
+// Sets todays date on the input type date
 function setDatePicker() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
@@ -236,6 +244,8 @@ function setDatePicker() {
 
 }
 
+
+// Function to load user information in the form
 function loadUser(user) {
 
 
@@ -246,6 +256,8 @@ function loadUser(user) {
 
 }
 
+
+// If the booking has been successful, this function is called to show a thank you message
 function thankYou() {
 
     let form = document.getElementById('form');
@@ -261,6 +273,7 @@ function thankYou() {
 
 }
 
+// If the booking has been unsuccessful, this function is called to show an error message
 function bookingError() {
 
     let form = document.getElementById('form');
@@ -276,12 +289,14 @@ function bookingError() {
 
 }
 
+// Function to create the captcha
 function loadCaptcha() {
 
     document.getElementById('num1').innerHTML = Math.floor(Math.random() * (0 - 5 + 1) + 5);
     document.getElementById('num2').innerHTML = Math.floor(Math.random() * (0 - 5 + 1) + 5);
 }
 
+// Function to validate the captcha
 function captcha() {
 
     let num1 = document.getElementById('num1').innerHTML
@@ -295,6 +310,7 @@ function captcha() {
 
 }
 
+// Function to validate fields in the form
 function formValidation() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
@@ -311,6 +327,7 @@ function formValidation() {
     return true
 }
 
+// Function to validate email
 const validateEmail = (email) => {
     return String(email)
         .toLowerCase()

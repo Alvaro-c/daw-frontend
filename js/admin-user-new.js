@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         document.getElementById('form').addEventListener('submit', submitForm);
@@ -11,6 +12,7 @@ function start() {
         window.location.href = "./index.html";
     }
 
+    // Handles form submission
     function submitForm(e) {
         e.preventDefault();
 
@@ -19,6 +21,7 @@ function start() {
         window.location.href = "./admin-user.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let name = document.getElementById('name').value;

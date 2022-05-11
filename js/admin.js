@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         let user = document.cookie.split('&')[0];
@@ -22,6 +23,7 @@ function start() {
 
 }
 
+// Load from 0 to 3 bookings in the HTML 
 function loadBookings(bookings) {
 
     let ul = document.getElementById('last-bookings');

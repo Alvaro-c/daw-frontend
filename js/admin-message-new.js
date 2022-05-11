@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         document.getElementById('form').addEventListener('submit', submitForm);
@@ -23,6 +24,7 @@ function start() {
         window.location.href = "./admin-message.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let user = document.getElementById('user').value;
@@ -45,7 +47,7 @@ function start() {
 
 }
 
-
+// Retrieves user info and create them as a drop down list
 function loadUsers(users) {
 
     let select = document.getElementById('user');
@@ -59,7 +61,7 @@ function loadUsers(users) {
 
 }
 
-
+// Gives today date in input type date format
 function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);

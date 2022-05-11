@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+  // Check user permissions, if so load the rest of functions, if not, redirects to index
   if (isAdmin()) {
 
     findAllUsers(showAllUsers);
@@ -13,6 +14,7 @@ function start() {
 
 }
 
+// Loads all users in the HTML
 function showAllUsers(users) {
 
   let stackedList = document.getElementById('users-list');

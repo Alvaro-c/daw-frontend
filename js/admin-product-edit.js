@@ -4,6 +4,7 @@ let image;
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         loadInfo();
@@ -12,6 +13,7 @@ function start() {
 
         let photo = document.getElementById('image');
 
+        // If new photo is loaded, it changes value for image into new base64 coded image
         photo.addEventListener('change', () => {
 
             encodeImageFileAsURL(photo)
@@ -23,7 +25,7 @@ function start() {
     }
 
  
-
+    // Handles form submission
     function submitForm(e) {
         e.preventDefault();
 
@@ -35,6 +37,7 @@ function start() {
         window.location.href = "./admin-product.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
 
@@ -54,6 +57,7 @@ function start() {
 
     }
 
+    // Loads the information of the object that is being edited into the form
     function loadInfo() {
 
         let id = new URLSearchParams(window.location.search).get('id');
@@ -74,7 +78,7 @@ function start() {
 
 }
 
-
+// Transform image loaded in input type file into base64 image
 function encodeImageFileAsURL(element) {
 
     let file = element.files[0];

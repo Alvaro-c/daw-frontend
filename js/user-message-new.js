@@ -22,6 +22,7 @@ function start() {
         window.location.href = "./profile.html";
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let user = document.cookie.split('&')[0];
@@ -46,7 +47,7 @@ function start() {
 
 }
 
-
+// Gives today date in input type date format
 function now() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);

@@ -12,6 +12,7 @@ function start() {
     // Load new photo
     let photo = document.getElementById('profile-photo');
     
+    // If new photo is loaded, it changes value for image into new base64 coded image
     photo.addEventListener('change', () => {
         
         encodeImageFileAsURL(photo)
@@ -28,6 +29,7 @@ function start() {
         window.location.href = `./profile.html?id=${id}`;
     }
 
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let name = document.getElementById('name').value;
@@ -49,6 +51,7 @@ function start() {
 
     }
 
+    // Loads the information of the object that is being edited into the form
     function loadInfo() {
 
         let id = new URLSearchParams(window.location.search).get('id');
@@ -72,6 +75,7 @@ function start() {
 
 }
 
+// Transform image loaded in input type file into base64 image
 function encodeImageFileAsURL(element) {
 
     let file = element.files[0];

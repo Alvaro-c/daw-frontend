@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
         // Load data into the dropdown menus
         loadInfo();
@@ -13,7 +14,7 @@ function start() {
 
 }
 
-
+// Loads the information of the object that is being edited into the form
 function loadInfo() {
 
     let id = new URLSearchParams(window.location.search).get('id');

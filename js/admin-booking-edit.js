@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', start);
 
 function start() {
 
-
+    // Check user permissions, if so load the rest of functions, if not, redirects to index
     if (isAdmin()) {
 
         document.getElementById('form').addEventListener('submit', submitForm);
@@ -30,7 +30,7 @@ function start() {
 
 
 
-
+    // Gets info inputed by the user in the form
     function getFormInfo() {
 
         let product = document.getElementById('product').value;
@@ -59,7 +59,7 @@ function start() {
     }
 
 
-
+    // Loads the information of the object that is being edited into the form
     function loadInfo() {
 
         let id = new URLSearchParams(window.location.search).get('id');
@@ -84,6 +84,7 @@ function start() {
 
 }
 
+// Get info from products and load them into HTML
 function loadProducts(products) {
 
     let select = document.getElementById('product');
@@ -98,6 +99,7 @@ function loadProducts(products) {
 
 }
 
+// Get info from users and load them into HTML
 function loadUsers(users) {
 
     let select = document.getElementById('client');

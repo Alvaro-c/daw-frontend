@@ -37,6 +37,7 @@ function productRevAndFaq() {
 
 }
 
+// Load product info into the HTML
 function loadProduct() {
 
     let id = new URLSearchParams(window.location.search).get('id')

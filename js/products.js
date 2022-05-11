@@ -15,7 +15,7 @@ function start() {
 
 }
 
-
+// Load all products into the gallery
 function productsToGallery(products) {
 
     let gallery = document.getElementById(`products`);
@@ -60,6 +60,7 @@ function productsToGallery(products) {
 
 }
 
+// Sets todays date on the input type date
 function setDatePicker() {
     Date.prototype.toDateInputValue = (function () {
         var local = new Date(this);
@@ -74,12 +75,14 @@ function setDatePicker() {
 
 }
 
+// Function to filter by people and date. Products will display accordingly 
 function filter() {
 
     document.getElementById('nextDay').addEventListener('click', nextDay);
     document.getElementById('prevDay').addEventListener('click', prevDay);
     let currentDay = new Date(document.getElementById('date-picker').value);
 
+    // Function to advance to next day on input type date field
     function nextDay() {
 
         let datePicker = document.getElementById('date-picker');
@@ -89,6 +92,7 @@ function filter() {
 
     }
 
+    // Function to go back one day on input type date field
     function prevDay() {
 
         let datePicker = document.getElementById('date-picker');
@@ -107,6 +111,7 @@ function filter() {
 }
 
 
+// Show available products after filters change
 function displayAvailableProducts() {
 
     // select * from product p join booking b on p.id = b.id_product where (b.adults + b.children) < p.capacity and date = '2022-04-11';
@@ -182,6 +187,7 @@ function displayAvailableProducts() {
     }
 }
 
+// Function to fill HTML select tag with options
 function fillPeople(limit){
 
     let select = document.getElementById('people');
