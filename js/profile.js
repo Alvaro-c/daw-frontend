@@ -1,3 +1,4 @@
+// Code to start executing script when DOM ready
 document.addEventListener('DOMContentLoaded', start);
 
 function start() {

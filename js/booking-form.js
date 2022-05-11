@@ -1,3 +1,4 @@
+// Code to start executing script when DOM ready
 window.addEventListener('DOMContentLoaded', start);
 
 let userId;
@@ -240,6 +241,7 @@ function loadUser(user) {
 
     document.getElementById('name').value = user.name;
     document.getElementById('surname').value = user.surname;
+    document.getElementById('email').value = user.email;
 
 
 }

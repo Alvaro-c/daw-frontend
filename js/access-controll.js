@@ -1,3 +1,4 @@
+// Checks if the cookie is present and if so check user permissions
 function checkCookie() {
 
     //Check if cookie present
@@ -11,11 +12,13 @@ function checkCookie() {
 
 }
 
+// Check the user's permissions
 function accessControl(){
     isLoged()
     isAdmin()
 }
 
+// Check if user loged
 function isLoged(){
 
     //Check if cookie present
@@ -33,6 +36,7 @@ function isLoged(){
 
 }
 
+// Check if user is admin
 function isAdmin() {
 
     //Check if cookie present
@@ -53,7 +57,7 @@ function isAdmin() {
 }
 
 
-
+// Function to end session
 function deleteCookie() {
     let name = 'user';
     let path = '/daw-frontend';
@@ -67,6 +71,7 @@ function deleteCookie() {
     window.location.href = "./index.html";
 }
 
+// Function to get cookie info
 function getCookie(name){
     return document.cookie.split('&').some(c => {
         return c.trim().startsWith(name + '=');

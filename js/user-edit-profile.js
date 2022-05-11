@@ -1,3 +1,4 @@
+// Code to start executing script when DOM ready
 window.addEventListener('DOMContentLoaded', start);
 
 let currentRol;
@@ -35,7 +36,6 @@ function start() {
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
 
-
         let user = {
             'name': name,
             'surname': surname,
@@ -45,7 +45,6 @@ function start() {
             'rol': currentRol, 
             'photo': newPhoto
         }
-
         return user;
 
     }
@@ -64,6 +63,7 @@ function start() {
             document.getElementById('password').value = user.password;
             currentRol = user.rol;
             newPhoto = user.photo;
+
         }
 
 
@@ -73,7 +73,7 @@ function start() {
 }
 
 function encodeImageFileAsURL(element) {
-    newPhoto = '';
+
     let file = element.files[0];
     let reader = new FileReader();
 

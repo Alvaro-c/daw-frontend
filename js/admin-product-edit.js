@@ -1,3 +1,4 @@
+// Code to start executing script when DOM ready
 window.addEventListener('DOMContentLoaded', start);
 let image;
 
@@ -8,6 +9,14 @@ function start() {
         loadInfo();
 
         document.getElementById('form').addEventListener('submit', submitForm);
+
+        let photo = document.getElementById('image');
+
+        photo.addEventListener('change', () => {
+
+            encodeImageFileAsURL(photo)
+
+        });
 
     } else {
         window.location.href = "./index.html";
@@ -67,7 +76,7 @@ function start() {
 
 
 function encodeImageFileAsURL(element) {
-    image = '';
+
     let file = element.files[0];
     let reader = new FileReader();
 
