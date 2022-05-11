@@ -38,7 +38,6 @@ function addUser(user) {
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result)
             return result;
         })
 }
@@ -52,7 +51,6 @@ function editUser(id, user) {
         body: JSON.stringify(user)
     })
         .then((result) => {
-            console.log('flag')
             return result;
         })
 }
@@ -66,7 +64,6 @@ function deleteUserById(id) {
         .then(response => response.json())
         .then((result) => {
             findAllUsers(showAllUsers);
-            console.log(result)
             return result;
         })
 }
@@ -119,7 +116,6 @@ function addMessage(message) {
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result)
             return result;
         })
 
@@ -140,7 +136,6 @@ function editMessage(id) {
         })
     })
         .then((result) => {
-            console.log(result);
             return result;
         })
 }
@@ -152,7 +147,6 @@ function deleteMessageById(id) {
     })
         .then(response => response.json())
         .then((result) => {
-            console.log(result);
             findAllMessages(showAllMessages);
             return result;
         })
@@ -212,11 +206,9 @@ function addProduct(product) {
     })
         .then((resp) => {
 
-            console.log(resp);
             return resp.json()
         })
         .then((result) => {
-            console.log(result);
             return result;
         })
 
@@ -232,7 +224,6 @@ function editProduct(id, product) {
         body: JSON.stringify(product)
     })
         .then((result) => {
-            console.log(result, 'FLAG');
             return result;
         })
 }
@@ -244,7 +235,6 @@ function deleteProductById(id) {
     })
         .then(response => response.json())
         .then((result) => {
-            console.log(result);
             findAllProducts(showAllProducts);
             return result;
         }
@@ -294,7 +284,7 @@ function findBookingByProduct(id) {
             return promise.json();
         })
         .then((result) => {
-            console.log(result);
+
             return result;
         })
 }
@@ -321,14 +311,12 @@ function addBooking(booking) {
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result);
             return result;
         })
 
 }
 
 function editBooking(id, booking) {
-    console.log(booking);
     fetch(`http://127.0.0.1:4000/api/booking/${id}`, {
         method: 'PUT',
         headers: {
@@ -337,7 +325,6 @@ function editBooking(id, booking) {
         body: JSON.stringify(booking)
     })
         .then((result) => {
-            console.log(result);
             return result;
         })
 }
@@ -350,8 +337,7 @@ function deleteBookingById(id) {
         .then(response => response.json())
         .then((result) => {
             findAllBookings(showAllBookings);
-            console.log(result)
-            return result;;
+            return result;
         })
 
 }
@@ -389,7 +375,6 @@ function newBooking(booking) {
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result);
             return result;
         })
 }
@@ -410,7 +395,6 @@ function login(user, callBack) {
     })
         .then((resp) => {
 
-            //console.log(console.log(...resp.headers));
             return resp.json()
         })
         .then((result) => {
@@ -425,10 +409,10 @@ function checkUserSession() {
     const request = fetch(`http://127.0.0.1:4000/api/login/test`)
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result);
+
             return result;
         })
-    // 
+    
 }
 
 function newBookingFromUser(booking) {
@@ -443,20 +427,16 @@ function newBookingFromUser(booking) {
     })
         .then(resp => resp.json())
         .then((result) => {
-            console.log(result);
             return result;
             
         }).then((result) => {
 
-            console.log(!isNaN(result.id));
             if (!isNaN(result.id)) {
-                console.log('callBack de thank you')
                 thankYou()
                 return result;
               }
               return Promise.reject(response); // catching the error
         }).catch(() => {
-            console.log('callBack de error')
             bookingError()
         })
 
@@ -498,9 +478,7 @@ function addUserAndBooking(user, booking) {
 
         }).then((result) => {
 
-            console.log(!isNaN(result.id));
             if (!isNaN(result.id)) {
-                console.log('callBack de thank you')
                 thankYou()
                 return result;
               }
@@ -508,7 +486,7 @@ function addUserAndBooking(user, booking) {
 
 
         }).catch(() => {
-            console.log('callBack de error')
+
             bookingError()
         })
 }
@@ -537,7 +515,6 @@ function newContactForm(form, callBack) {
 // Convert images
 
 function base64ToImage(base64) {
-    console.log(base64);
 
     let image = new Image();
     image.src = base64;

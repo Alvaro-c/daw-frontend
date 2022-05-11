@@ -34,8 +34,6 @@ function start() {
         let price = document.getElementById('price').value;
         let capacity = document.getElementById('capacity').value;
 
-        console.log(image);
-
         let product = {
             'name': name,
             'description': description,
@@ -43,8 +41,6 @@ function start() {
             'capacity': capacity,
             'image': image
         }
-
-        console.log(product);
         return product;
 
     }

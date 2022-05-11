@@ -17,7 +17,6 @@ function start() {
         e.preventDefault();
 
         let message = getFormInfo();
-        console.log(message);
         addMessage(message);
         window.location.href = "./profile.html";
     }

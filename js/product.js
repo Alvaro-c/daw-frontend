@@ -44,7 +44,7 @@ function loadProduct() {
         document.getElementById('product-image').setAttribute('src', product.image);
         document.getElementById('product-name').innerHTML = product.name;
         document.getElementById('product-description').innerHTML = product.description;
-        console.log(product.price);
+
         if(product.price != 0) {
             document.getElementById('product-price').innerHTML = `${product.price}€`;
         } else {

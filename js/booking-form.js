@@ -11,8 +11,6 @@ function start() {
     showAvail();
     loadCaptcha();
 
-    console.log('loged', isLoged(), 'admin', isAdmin());
-
     if (document.cookie.split('=')[1] != undefined) {
         // If the user is registered
         let user = document.cookie.split('&')[0];
@@ -78,7 +76,6 @@ function setCancelButton() {
 function confirmBooking(e) {
 
     e.preventDefault();
-    console.log(e);
     document.getElementById('form').checkValidity();
 
     let id = new URLSearchParams(window.location.search).get('id');

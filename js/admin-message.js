@@ -14,8 +14,6 @@ function start() {
 
 function showAllMessages(messages) {
 
-    console.log(messages);
-
     let stackedList = document.getElementById('message-list');
     stackedList.innerHTML = ``;
 

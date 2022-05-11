@@ -20,26 +20,22 @@ function validateForm(){
 
     if (adults + children <=0) {
 
-        console.log('Reserva para 0 personas')
         return false;
     }
 
     if (adults < 0 || children < 0) {
 
-        console.log('Reserva con valores negativos')
         return false;
     }
 
     if ((adults + children) > avail) {
 
-        console.log('Reserva para más plazas de las permitidas')
         return false;
     }
 
 
     if(dateD < todayD) {
 
-        console.log('Reserva en una fecha pasada');
         return false;
     }
 
@@ -48,13 +44,11 @@ function validateForm(){
     /* Control de campos vacios para adult y children */
     if(Number.isNaN(adults)) {
 
-        console.log('FLAG adults' + adults);
         document.getElementById('adults-header15-2m').value = 0;
     }
 
     if(Number.isNaN(children)) {
 
-        console.log('FLAG children' + children);
         document.getElementById('children-header15-2m').value = 0;
     }
 
@@ -73,8 +67,6 @@ function validateCheckDate() {
 
 
     if(dateD < todayD) {
-
-        console.log('Reserva en una fecha pasada');
 
         return false;
     }

@@ -157,7 +157,6 @@ function displayAvailableProducts() {
                             // Si el id es igual, sumo personas 
 
                             people = people + parseInt(bookings[j].adults) + parseInt(bookings[j].children);
-                            //console.log(`Para el tour ${products[i].id} hay un total de ${people} personas`);
 
                         }
 
@@ -166,7 +165,6 @@ function displayAvailableProducts() {
                     let peopleRequested = document.getElementById('people').value;
 
                     if (products[i].capacity <= (people + parseInt(peopleRequested))) {
-                        //console.log(`Se marca completo el tour ${products[i].id} con ${people} ya en reserva y ${peopleRequested} personas solicitadas. Tiene y una capacidad de ${products[i].capacity}`);
                         
                         products[i].description = 'COMPLETO';
                         products[i].price = 'No disponible';

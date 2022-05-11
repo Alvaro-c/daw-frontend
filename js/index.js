@@ -7,7 +7,5 @@ function start(){
         document.getElementById('title').scrollIntoView({behavior:"smooth"});
     })
 
-    console.log('loged', isLoged(), 'admin', isAdmin());
-
 
 }
