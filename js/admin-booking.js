@@ -14,7 +14,6 @@ function start() {
 
 function showAllBookings(bookings) {
 
-    console.log(bookings);
 
     let stackedList = document.getElementById('booking-list');
     stackedList.innerHTML = ``;
