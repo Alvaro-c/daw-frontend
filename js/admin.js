@@ -151,4 +151,7 @@ function analytics() {
 function adminInfo(user) {
     let name = document.getElementById('admin-name');
     name.innerHTML = user.name;
+    let photo = document.getElementById('profile-picture');
+    console.log(user.photo);
+    photo.setAttribute("src", user.photo)
 }
